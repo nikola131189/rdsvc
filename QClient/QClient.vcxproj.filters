@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="widgets">
+      <UniqueIdentifier>{f50b9f29-33f0-496a-a761-52157ae61e2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileTransfer">
+      <UniqueIdentifier>{92d61abc-25db-4c44-b77c-182bb529c496}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="screen">
+      <UniqueIdentifier>{f5aa2a41-5a89-47af-9a56-5278aca59e87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terminal">
+      <UniqueIdentifier>{69cff5f7-1861-4e6a-9efd-865df38eeb46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{d5a268d1-d195-44d9-abc1-0b7bd397a85f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="QClient.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="QClient.ui">
+      <Filter>Resource Files</Filter>
+    </QtUic>
+    <QtMoc Include="QClient.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClCompile Include="QClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\TextEdit.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\TabWidget.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\TabItem.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\StringListWidget.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\SliderLabelWidget.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\LineEdit.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\ItemDelegate.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\TreeView.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\TreeModel.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientListWidgets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientControlWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FilesTabWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FilesWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FilesModels.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TransferWidget.cpp">
+      <Filter>FileTransfer</Filter>
+    </ClCompile>
+    <ClCompile Include="FileTransfer.cpp">
+      <Filter>FileTransfer</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenCtrlWidget.cpp">
+      <Filter>screen</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenSettingsWidget.cpp">
+      <Filter>screen</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenWidget.cpp">
+      <Filter>screen</Filter>
+    </ClCompile>
+    <ClCompile Include="TerminalCommandWidget.cpp">
+      <Filter>Terminal</Filter>
+    </ClCompile>
+    <ClCompile Include="TerminalWidget.cpp">
+      <Filter>Terminal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\codec\CodecException.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\codec\ffcodec\FFDecoder.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\codec\ffcodec\FFEncoder.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\codec\mycodec\my_decoder.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\codec\mycodec\my_encoder.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\crypto\RsaEncryptor.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\events\proto\serialize.pb.cc">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\files\FileBuffer.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\files\file.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\net\ClientSessionHandler.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\net\Connection.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\net\PacketHelper.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="styles.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="widgets\TextEdit.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\TabWidget.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\TabItem.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\StringListWidget.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\SliderLabelWidget.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\LineEdit.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\ItemDelegate.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\TreeView.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\TreeModel.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="HomeWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ClientListWidgets.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ClientControlWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="FilesTabWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="FilesWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="AbstractFilesModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="FilesModels.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="TransferWidget.h">
+      <Filter>FileTransfer</Filter>
+    </QtMoc>
+    <QtMoc Include="ScreenCtrlWidget.h">
+      <Filter>screen</Filter>
+    </QtMoc>
+    <QtMoc Include="ScreenSettingsWidget.h">
+      <Filter>screen</Filter>
+    </QtMoc>
+    <QtMoc Include="ScreenWidget.h">
+      <Filter>screen</Filter>
+    </QtMoc>
+    <QtMoc Include="TerminalCommandWidget.h">
+      <Filter>Terminal</Filter>
+    </QtMoc>
+    <QtMoc Include="TerminalWidget.h">
+      <Filter>Terminal</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="widgets\TextEdit.ui">
+      <Filter>Resource Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\TabWidget.ui">
+      <Filter>Resource Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\TabItem.ui">
+      <Filter>Resource Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\StringListWidget.ui">
+      <Filter>Resource Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\SliderLabelWidget.ui">
+      <Filter>Resource Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\LineEdit.ui">
+      <Filter>Resource Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\TreeView.ui">
+      <Filter>Resource Files</Filter>
+    </QtUic>
+    <QtUic Include="HomeWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ClientListWidgets.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ClientControlWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="FilesTabWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="FilesWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="TransferWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ScreenCtrlWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ScreenSettingsWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ScreenWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="TerminalCommandWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="TerminalWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractTransfer.h">
+      <Filter>FileTransfer</Filter>
+    </ClInclude>
+    <ClInclude Include="FileTransfer.h">
+      <Filter>FileTransfer</Filter>
+    </ClInclude>
+    <ClInclude Include="TerminalHistory.h">
+      <Filter>Terminal</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QClient.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/QClient">
+        <file alias="RC_CLOSE">res/close.png</file>
+        <file alias="RC_DOWN_ARROW">res/down_arrow.png</file>
+        <file>res/file.png</file>
+        <file>res/main.ico</file>
+        <file>res/main.png</file>
+        <file>res/myapp.rc</file>
+        <file>res/screen.png</file>
+        <file>res/terminal.png</file>
+        <file alias="RC_UP_ARROW">res/up_arrow.png</file>
+    </qresource>
+</RCC>

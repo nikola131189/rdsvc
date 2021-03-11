@@ -1,0 +1,23 @@
+<UI version="4.0" >
+ <class>ScreenSettingsWidget</class>
+ <widget class="QWidget" name="ScreenSettingsWidget" >
+  <property name="objectName" >
+   <string notr="true">ScreenSettingsWidget</string>
+  </property>
+  <property name="geometry" >
+   <rect>
+	<x>0</x>
+	<y>0</y>
+	<width>400</width>
+	<height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>ScreenSettingsWidget</string>
+  </property>
+ </widget>
+ <layoutDefault spacing="6" margin="11" />
+ <pixmapfunction></pixmapfunction>
+ <resources/>
+ <connections/>
+</UI>

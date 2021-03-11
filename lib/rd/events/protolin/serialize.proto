@@ -1,0 +1,391 @@
+syntax = "proto3";
+
+message ErrorCode
+{
+	int32 value = 1;
+	string message = 2;
+}
+
+message Client
+{
+	uint32 id = 1;
+	string name = 2;
+	uint32 ping = 3;
+	string address = 4;
+	uint64 connection_time = 5;
+	uint32 v4Address = 6;
+	bytes v6Address = 7;
+}
+
+message ClientsRequestEvent
+{
+
+}
+
+
+message ClientsEvent
+{
+	repeated Client clients = 1; 
+}
+
+message HelloEvent
+{
+	Client client = 1;
+	string imprint = 2;
+	string password = 3;
+	uint32 connection_type = 4;
+}
+
+
+
+
+
+
+
+
+
+message VideoFormat
+{
+	uint32 id = 1;
+	int64 bitrate = 2;
+	int32 w = 3;
+	int32 h = 4;
+	int32 dw = 5;
+	int32 dh = 6;
+	int32 profile = 7;
+	int32 quantization = 8;
+	int32 thread_count = 9;
+};
+
+
+
+message CursorInfo
+{
+	int32 width = 1;
+	int32 height = 2;
+	int32 hotspot_x = 3;
+	int32 hotspot_y = 4;
+	bytes data = 5;
+	bool visible = 6;
+	int32 x = 7;
+	int32 y = 8;
+};
+
+
+message VideoEvent
+{
+	string display = 1;
+	int32 screen_id = 2;
+
+	bytes data = 3;
+	VideoFormat video_format = 4;
+	CursorInfo cursor = 5;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+message TerminalEvent
+{
+
+	message Open {}
+
+	message Terminate {}
+	
+	message CtrlC {}
+	
+	message StdIn 
+	{
+		bytes data = 1;
+	}
+
+	message StdOut 
+	{
+		bytes data = 1;
+	}
+	
+	message StdErr
+	{
+		bytes data = 1;
+	}
+	
+	
+	string id = 1;
+	oneof message 
+	{
+		Open open = 2;
+		Terminate terminate = 3;
+		CtrlC ctrl_c = 4;
+		StdIn std_in = 5;
+		StdOut std_out = 6;
+		StdErr std_err = 7;
+		ErrorCode error = 8;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+message FileInfo
+{
+	string path = 1;
+	uint64 size = 2;
+	uint64 time = 3;
+	int32 type = 4;
+	uint32 perm = 5;
+}
+
+
+message FilesEvent
+{
+
+	message DirRequest
+	{
+		string path = 1;
+	}
+
+
+	message DirResponse
+	{
+		repeated FileInfo data = 1;
+	}
+
+
+	message DirRecursionRequest
+	{
+		string path = 1;
+	}
+
+
+	message DirRecursionResponse
+	{
+		repeated FileInfo data = 1;
+	}
+
+	message Remove
+	{
+		string path = 1;
+	}
+
+
+	message MakeDir
+	{
+		string path = 1;
+	}
+
+
+	message Rename
+	{
+		string src = 1;
+		string dest = 2;
+	}
+	
+	
+	
+	string id = 1;
+	oneof message 
+	{
+		DirRequest dir_request = 2;
+		DirResponse dir_response = 3;
+		DirRecursionRequest dir_recursion_request = 4;
+		DirRecursionResponse dir_recursion_response = 5;
+		Remove remove = 6;
+		MakeDir make_dir = 7;
+		Rename rename = 8;
+		ErrorCode error = 9;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+message FileTransferEvent
+{	
+	message Post 
+	{
+		int64 offset = 1;
+		string path = 2;
+		bytes data = 3;
+	} 
+	
+	
+	message PostOk
+	{
+		int64 offset = 1;
+		uint32 size = 2; 
+	}
+	
+	
+	
+	message Get
+	{	
+		int64 offset = 1;
+		uint32 size = 2;
+		string path = 3;
+	}
+
+
+	message GetOk
+	{
+		int64 offset = 1;
+		bytes data = 2;
+		bool eof = 3;
+	}
+
+
+	message Error
+	{
+		int32 value = 1;
+		string message = 2;
+		int64 offset = 3;
+	}
+	
+	uint32 id = 1;
+	oneof message 
+	{
+		Post post = 2;
+		PostOk postOk = 3;
+		Get get = 4;
+		GetOk getOk = 5;
+		Error error = 6;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+message Resolution
+{
+	uint32 width = 1;
+	uint32 height = 2;
+	uint32 mwidth = 3;
+	uint32 mheight = 4;
+}
+
+
+message ScreenInfo
+{
+	uint32 id = 1;
+	repeated Resolution resolutions = 2;	
+	Resolution current = 3;
+}
+
+
+message DisplayInfo
+{
+	string name = 1;
+	repeated ScreenInfo screens = 2; 
+}
+
+
+message DisplayEvent
+{
+	message Request { string name = 1; }
+
+	message Response { DisplayInfo display = 1; }
+
+	message Open
+	{
+		string display = 1;
+		int32 screen_id = 2;
+		VideoFormat video_format = 3;
+		bool block_input = 4; 
+	}
+
+	message Close
+	{
+		string display = 1;
+		int32 screen_id = 2;
+	}
+
+
+	oneof message 
+	{
+		Request request = 1;
+		Response response = 2;
+		Open open = 3;
+		Close close = 4;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+message MouseEvent
+{
+	int32 x = 1;
+	int32 y = 2;
+	int32 type = 3;
+	bool pressed = 4;
+};
+
+
+
+message KeybdEvent
+{
+	uint32 key = 1;
+	bool pressed = 2;
+	bool extended = 3;
+}
+
+
+
+message ActionEvent
+{
+	int32 screen_id = 1;
+	oneof message 
+	{
+		MouseEvent mouse = 2;
+		KeybdEvent keybd = 3;
+	}
+};
+
+
+
+message ClipboardEvent
+{
+	string text = 1;
+};
+
+
+
+
+

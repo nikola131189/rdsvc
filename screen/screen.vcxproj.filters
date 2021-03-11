@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{d3ee7336-a7e0-4793-a282-f6969cb47b7d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\net\ClientSessionHandler.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\codec\CodecException.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\net\Connection.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\win\desktopDublication\DuplicationMan.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\win\desktopDublication\DXGI_screen_reader.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\codec\ffcodec\FFDecoder.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\codec\ffcodec\FFEncoder.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\files\file.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\files\FileBuffer.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\codec\mycodec\my_decoder.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\codec\mycodec\my_encoder.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\win\NativeWin.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\net\PacketHelper.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\crypto\RsaEncryptor.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\events\protoWin\serialize.pb.cc">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\win\WinAction.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\win\WinClipBoard.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\win\WinDisplay.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\win\WinEventLoop.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\win\WinProcess.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\win\WinScreenCapture.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

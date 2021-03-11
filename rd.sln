@@ -1,0 +1,238 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "screen", "screen\screen.vcxproj", "{857D74E1-DAC4-4868-9C2E-C01EF83DFCD8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "client", "client\client.vcxproj", "{2DE2F34E-5504-481E-ACC1-3874DA6E0E1D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "server", "server\server.vcxproj", "{F09C13B3-6075-4D80-86B0-E84A668C1AF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{12C9330C-EF31-49FF-83DE-C2A558AA09AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rd", "rd", "{68F8F70D-2A56-4B6D-BF6E-0BE18FB2D6BA}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\Client.hpp = lib\rd\Client.hpp
+		lib\rd\ConfigReader.hpp = lib\rd\ConfigReader.hpp
+		lib\rd\EventBus.hpp = lib\rd\EventBus.hpp
+		lib\rd\Log.h = lib\rd\Log.h
+		lib\rd\Native.h = lib\rd\Native.h
+		lib\rd\rd.h = lib\rd\rd.h
+		lib\rd\thread_pool.h = lib\rd\thread_pool.h
+		lib\rd\utility.h = lib\rd\utility.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "crypto", "crypto", "{D4E10B3F-D775-4D6B-9698-6615E96C09E7}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\crypto\AesEncryptor.h = lib\rd\crypto\AesEncryptor.h
+		lib\rd\crypto\base64.h = lib\rd\crypto\base64.h
+		lib\rd\crypto\crypto.h = lib\rd\crypto\crypto.h
+		lib\rd\crypto\HMAC_SHA.hpp = lib\rd\crypto\HMAC_SHA.hpp
+		lib\rd\crypto\RsaEncryptor.cpp = lib\rd\crypto\RsaEncryptor.cpp
+		lib\rd\crypto\RsaEncryptor.h = lib\rd\crypto\RsaEncryptor.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "events", "events", "{6B205307-DEBF-4A2E-974A-EC5D400C17A2}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\events\events.h = lib\rd\events\events.h
+		lib\rd\events\EventsProto.h = lib\rd\events\EventsProto.h
+		lib\rd\events\Serializer.hpp = lib\rd\events\Serializer.hpp
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QClient", "QClient\QClient.vcxproj", "{2AB7B60D-23D5-44FA-AE6A-EB47820FA4DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{966ACF17-7AE8-41C5-B148-0D003F526FA1}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\files\file.cpp = lib\rd\files\file.cpp
+		lib\rd\files\file.h = lib\rd\files\file.h
+		lib\rd\files\file_system.h = lib\rd\files\file_system.h
+		lib\rd\files\FileBuffer.cpp = lib\rd\files\FileBuffer.cpp
+		lib\rd\files\FileBuffer.h = lib\rd\files\FileBuffer.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "win", "win", "{4D31D32F-997D-4558-A353-3404CAA8D9DC}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\win\NativeWin.cpp = lib\rd\win\NativeWin.cpp
+		lib\rd\win\NativeWin.h = lib\rd\win\NativeWin.h
+		lib\rd\win\WinAction.cpp = lib\rd\win\WinAction.cpp
+		lib\rd\win\WinAction.h = lib\rd\win\WinAction.h
+		lib\rd\win\WinClipBoard.cpp = lib\rd\win\WinClipBoard.cpp
+		lib\rd\win\WinClipBoard.h = lib\rd\win\WinClipBoard.h
+		lib\rd\win\WinDisplay.cpp = lib\rd\win\WinDisplay.cpp
+		lib\rd\win\WinDisplay.h = lib\rd\win\WinDisplay.h
+		lib\rd\win\WinEventLoop.cpp = lib\rd\win\WinEventLoop.cpp
+		lib\rd\win\WinEventLoop.h = lib\rd\win\WinEventLoop.h
+		lib\rd\win\WinProcess.cpp = lib\rd\win\WinProcess.cpp
+		lib\rd\win\WinProcess.h = lib\rd\win\WinProcess.h
+		lib\rd\win\WinScreenCapture.cpp = lib\rd\win\WinScreenCapture.cpp
+		lib\rd\win\WinScreenCapture.h = lib\rd\win\WinScreenCapture.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "desktopduplication", "desktopduplication", "{3804AFB5-0E20-4E1E-B339-405EA99D2ED0}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\win\desktopDublication\DuplicationMan.cpp = lib\rd\win\desktopDublication\DuplicationMan.cpp
+		lib\rd\win\desktopDublication\DuplicationMan.h = lib\rd\win\desktopDublication\DuplicationMan.h
+		lib\rd\win\desktopDublication\DXGI_screen_reader.cpp = lib\rd\win\desktopDublication\DXGI_screen_reader.cpp
+		lib\rd\win\desktopDublication\DXGI_screen_reader.h = lib\rd\win\desktopDublication\DXGI_screen_reader.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lin", "lin", "{1917C317-425D-4ACC-A559-293D5A429532}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\lin\LinAction.cpp = lib\rd\lin\LinAction.cpp
+		lib\rd\lin\LinAction.h = lib\rd\lin\LinAction.h
+		lib\rd\lin\LinClipBoard.cpp = lib\rd\lin\LinClipBoard.cpp
+		lib\rd\lin\LinClipBoard.h = lib\rd\lin\LinClipBoard.h
+		lib\rd\lin\LinDisplay.cpp = lib\rd\lin\LinDisplay.cpp
+		lib\rd\lin\LinDisplay.h = lib\rd\lin\LinDisplay.h
+		lib\rd\lin\LinEventLoop.cpp = lib\rd\lin\LinEventLoop.cpp
+		lib\rd\lin\LinEventLoop.h = lib\rd\lin\LinEventLoop.h
+		lib\rd\lin\LinScreenCapture.cpp = lib\rd\lin\LinScreenCapture.cpp
+		lib\rd\lin\LinScreenCapture.h = lib\rd\lin\LinScreenCapture.h
+		lib\rd\lin\NativeLin.cpp = lib\rd\lin\NativeLin.cpp
+		lib\rd\lin\NativeLin.h = lib\rd\lin\NativeLin.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "codec", "codec", "{936A1C25-F413-4483-9B32-06F59437D0CC}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\codec\Codec.h = lib\rd\codec\Codec.h
+		lib\rd\codec\CodecException.cpp = lib\rd\codec\CodecException.cpp
+		lib\rd\codec\CodecException.h = lib\rd\codec\CodecException.h
+		lib\rd\codec\CodecFactory.h = lib\rd\codec\CodecFactory.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ffcodec", "ffcodec", "{0554D4D1-3D08-458F-99DB-235B8A678F21}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\codec\ffcodec\FFDecoder.cpp = lib\rd\codec\ffcodec\FFDecoder.cpp
+		lib\rd\codec\ffcodec\FFDecoder.h = lib\rd\codec\ffcodec\FFDecoder.h
+		lib\rd\codec\ffcodec\FFEncoder.cpp = lib\rd\codec\ffcodec\FFEncoder.cpp
+		lib\rd\codec\ffcodec\FFEncoder.h = lib\rd\codec\ffcodec\FFEncoder.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mycodec", "mycodec", "{0E2D8E67-017E-4C4D-AD80-70716D3CF2C0}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\codec\mycodec\bit_mask.h = lib\rd\codec\mycodec\bit_mask.h
+		lib\rd\codec\mycodec\my_decoder.cpp = lib\rd\codec\mycodec\my_decoder.cpp
+		lib\rd\codec\mycodec\my_decoder.h = lib\rd\codec\mycodec\my_decoder.h
+		lib\rd\codec\mycodec\my_encoder.cpp = lib\rd\codec\mycodec\my_encoder.cpp
+		lib\rd\codec\mycodec\my_encoder.h = lib\rd\codec\mycodec\my_encoder.h
+		lib\rd\codec\mycodec\util.h = lib\rd\codec\mycodec\util.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "keyboard", "keyboard", "{3E615E8F-C18D-46E4-BC6C-C475F81BD6B8}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\keyboard\ScanCodeTranslator.h = lib\rd\keyboard\ScanCodeTranslator.h
+		lib\rd\keyboard\SDL_scancode.h = lib\rd\keyboard\SDL_scancode.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "protoLin", "protoLin", "{C84F5C10-0420-482D-AC68-24D9DB37DE8C}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\events\protolin\serialize.pb.cc = lib\rd\events\protolin\serialize.pb.cc
+		lib\rd\events\protolin\serialize.pb.h = lib\rd\events\protolin\serialize.pb.h
+		lib\rd\events\protolin\serialize.proto = lib\rd\events\protolin\serialize.proto
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "protoWin", "protoWin", "{47BAFDC4-2925-4917-A0FB-34F96A044B1A}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\events\protoWin\serialize.pb.cc = lib\rd\events\protoWin\serialize.pb.cc
+		lib\rd\events\protoWin\serialize.pb.h = lib\rd\events\protoWin\serialize.pb.h
+		lib\rd\events\protoWin\serialize.proto = lib\rd\events\protoWin\serialize.proto
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net", "Net", "{7644ED1A-A459-4A88-95D2-CF3DFA5474BD}"
+	ProjectSection(SolutionItems) = preProject
+		lib\rd\net\ClientSessionHandler.cpp = lib\rd\net\ClientSessionHandler.cpp
+		lib\rd\net\ClientSessionHandler.h = lib\rd\net\ClientSessionHandler.h
+		lib\rd\net\Connection.cpp = lib\rd\net\Connection.cpp
+		lib\rd\net\Connection.h = lib\rd\net\Connection.h
+		lib\rd\net\Connector.hpp = lib\rd\net\Connector.hpp
+		lib\rd\net\ConnectorSocks5.hpp = lib\rd\net\ConnectorSocks5.hpp
+		lib\rd\net\ConnectorTcp.h = lib\rd\net\ConnectorTcp.h
+		lib\rd\net\Packet.h = lib\rd\net\Packet.h
+		lib\rd\net\PacketHelper.cpp = lib\rd\net\PacketHelper.cpp
+		lib\rd\net\PacketHelper.h = lib\rd\net\PacketHelper.h
+		lib\rd\net\Session.h = lib\rd\net\Session.h
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{857D74E1-DAC4-4868-9C2E-C01EF83DFCD8}.Debug|ARM.ActiveCfg = Debug|Win32
+		{857D74E1-DAC4-4868-9C2E-C01EF83DFCD8}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{857D74E1-DAC4-4868-9C2E-C01EF83DFCD8}.Debug|x64.ActiveCfg = Debug|x64
+		{857D74E1-DAC4-4868-9C2E-C01EF83DFCD8}.Debug|x64.Build.0 = Debug|x64
+		{857D74E1-DAC4-4868-9C2E-C01EF83DFCD8}.Debug|x86.ActiveCfg = Debug|Win32
+		{857D74E1-DAC4-4868-9C2E-C01EF83DFCD8}.Debug|x86.Build.0 = Debug|Win32
+		{857D74E1-DAC4-4868-9C2E-C01EF83DFCD8}.Release|ARM.ActiveCfg = Release|Win32
+		{857D74E1-DAC4-4868-9C2E-C01EF83DFCD8}.Release|ARM64.ActiveCfg = Release|Win32
+		{857D74E1-DAC4-4868-9C2E-C01EF83DFCD8}.Release|x64.ActiveCfg = Release|x64
+		{857D74E1-DAC4-4868-9C2E-C01EF83DFCD8}.Release|x64.Build.0 = Release|x64
+		{857D74E1-DAC4-4868-9C2E-C01EF83DFCD8}.Release|x86.ActiveCfg = Release|Win32
+		{857D74E1-DAC4-4868-9C2E-C01EF83DFCD8}.Release|x86.Build.0 = Release|Win32
+		{2DE2F34E-5504-481E-ACC1-3874DA6E0E1D}.Debug|ARM.ActiveCfg = Debug|Win32
+		{2DE2F34E-5504-481E-ACC1-3874DA6E0E1D}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{2DE2F34E-5504-481E-ACC1-3874DA6E0E1D}.Debug|x64.ActiveCfg = Debug|x64
+		{2DE2F34E-5504-481E-ACC1-3874DA6E0E1D}.Debug|x64.Build.0 = Debug|x64
+		{2DE2F34E-5504-481E-ACC1-3874DA6E0E1D}.Debug|x86.ActiveCfg = Debug|Win32
+		{2DE2F34E-5504-481E-ACC1-3874DA6E0E1D}.Debug|x86.Build.0 = Debug|Win32
+		{2DE2F34E-5504-481E-ACC1-3874DA6E0E1D}.Release|ARM.ActiveCfg = Release|Win32
+		{2DE2F34E-5504-481E-ACC1-3874DA6E0E1D}.Release|ARM64.ActiveCfg = Release|Win32
+		{2DE2F34E-5504-481E-ACC1-3874DA6E0E1D}.Release|x64.ActiveCfg = Release|x64
+		{2DE2F34E-5504-481E-ACC1-3874DA6E0E1D}.Release|x64.Build.0 = Release|x64
+		{2DE2F34E-5504-481E-ACC1-3874DA6E0E1D}.Release|x86.ActiveCfg = Release|Win32
+		{2DE2F34E-5504-481E-ACC1-3874DA6E0E1D}.Release|x86.Build.0 = Release|Win32
+		{F09C13B3-6075-4D80-86B0-E84A668C1AF9}.Debug|ARM.ActiveCfg = Debug|Win32
+		{F09C13B3-6075-4D80-86B0-E84A668C1AF9}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{F09C13B3-6075-4D80-86B0-E84A668C1AF9}.Debug|x64.ActiveCfg = Debug|x64
+		{F09C13B3-6075-4D80-86B0-E84A668C1AF9}.Debug|x64.Build.0 = Debug|x64
+		{F09C13B3-6075-4D80-86B0-E84A668C1AF9}.Debug|x86.ActiveCfg = Debug|Win32
+		{F09C13B3-6075-4D80-86B0-E84A668C1AF9}.Debug|x86.Build.0 = Debug|Win32
+		{F09C13B3-6075-4D80-86B0-E84A668C1AF9}.Release|ARM.ActiveCfg = Release|Win32
+		{F09C13B3-6075-4D80-86B0-E84A668C1AF9}.Release|ARM64.ActiveCfg = Release|Win32
+		{F09C13B3-6075-4D80-86B0-E84A668C1AF9}.Release|x64.ActiveCfg = Release|x64
+		{F09C13B3-6075-4D80-86B0-E84A668C1AF9}.Release|x64.Build.0 = Release|x64
+		{F09C13B3-6075-4D80-86B0-E84A668C1AF9}.Release|x86.ActiveCfg = Release|Win32
+		{F09C13B3-6075-4D80-86B0-E84A668C1AF9}.Release|x86.Build.0 = Release|Win32
+		{2AB7B60D-23D5-44FA-AE6A-EB47820FA4DA}.Debug|ARM.ActiveCfg = Debug|Win32
+		{2AB7B60D-23D5-44FA-AE6A-EB47820FA4DA}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{2AB7B60D-23D5-44FA-AE6A-EB47820FA4DA}.Debug|x64.ActiveCfg = Debug|x64
+		{2AB7B60D-23D5-44FA-AE6A-EB47820FA4DA}.Debug|x86.ActiveCfg = Debug|Win32
+		{2AB7B60D-23D5-44FA-AE6A-EB47820FA4DA}.Debug|x86.Build.0 = Debug|Win32
+		{2AB7B60D-23D5-44FA-AE6A-EB47820FA4DA}.Release|ARM.ActiveCfg = Release|Win32
+		{2AB7B60D-23D5-44FA-AE6A-EB47820FA4DA}.Release|ARM64.ActiveCfg = Release|Win32
+		{2AB7B60D-23D5-44FA-AE6A-EB47820FA4DA}.Release|x64.ActiveCfg = Release|x64
+		{2AB7B60D-23D5-44FA-AE6A-EB47820FA4DA}.Release|x86.ActiveCfg = Release|Win32
+		{2AB7B60D-23D5-44FA-AE6A-EB47820FA4DA}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{68F8F70D-2A56-4B6D-BF6E-0BE18FB2D6BA} = {12C9330C-EF31-49FF-83DE-C2A558AA09AA}
+		{D4E10B3F-D775-4D6B-9698-6615E96C09E7} = {68F8F70D-2A56-4B6D-BF6E-0BE18FB2D6BA}
+		{6B205307-DEBF-4A2E-974A-EC5D400C17A2} = {68F8F70D-2A56-4B6D-BF6E-0BE18FB2D6BA}
+		{966ACF17-7AE8-41C5-B148-0D003F526FA1} = {68F8F70D-2A56-4B6D-BF6E-0BE18FB2D6BA}
+		{4D31D32F-997D-4558-A353-3404CAA8D9DC} = {68F8F70D-2A56-4B6D-BF6E-0BE18FB2D6BA}
+		{3804AFB5-0E20-4E1E-B339-405EA99D2ED0} = {4D31D32F-997D-4558-A353-3404CAA8D9DC}
+		{1917C317-425D-4ACC-A559-293D5A429532} = {68F8F70D-2A56-4B6D-BF6E-0BE18FB2D6BA}
+		{936A1C25-F413-4483-9B32-06F59437D0CC} = {68F8F70D-2A56-4B6D-BF6E-0BE18FB2D6BA}
+		{0554D4D1-3D08-458F-99DB-235B8A678F21} = {936A1C25-F413-4483-9B32-06F59437D0CC}
+		{0E2D8E67-017E-4C4D-AD80-70716D3CF2C0} = {936A1C25-F413-4483-9B32-06F59437D0CC}
+		{3E615E8F-C18D-46E4-BC6C-C475F81BD6B8} = {68F8F70D-2A56-4B6D-BF6E-0BE18FB2D6BA}
+		{C84F5C10-0420-482D-AC68-24D9DB37DE8C} = {6B205307-DEBF-4A2E-974A-EC5D400C17A2}
+		{47BAFDC4-2925-4917-A0FB-34F96A044B1A} = {6B205307-DEBF-4A2E-974A-EC5D400C17A2}
+		{7644ED1A-A459-4A88-95D2-CF3DFA5474BD} = {68F8F70D-2A56-4B6D-BF6E-0BE18FB2D6BA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B19774BF-3E9F-405E-8EA2-D8DDE5776671}
+	EndGlobalSection
+EndGlobal
