@@ -30,6 +30,7 @@ public slots:
 private:
 	void clearLayout();
 	void initWidgets();
+	bool eventFilter(QObject* watched, QEvent* event);
 private:
 	Ui::ClientControlWidget ui;
 	Rd::DisplayInfo _displayInfo;

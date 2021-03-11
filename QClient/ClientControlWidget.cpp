@@ -94,3 +94,32 @@ void ClientControlWidget::initWidgets()
 		_btns[i + 3]->setText(std::to_string(_displayInfo.screens[i].id).c_str());
 	}
 }
+
+bool ClientControlWidget::eventFilter(QObject* watched, QEvent* event)
+{
+	if (event->type() == QEvent::KeyPress)
+	{
+		QKeyEvent* ev = (QKeyEvent*)event;
+		if (ev->key() == Qt::Key_T && ev->modifiers() == Qt::ControlModifier)
+		{
+			terminalClick(_client);
+		}
+
+		if (ev->key() == Qt::Key_F && ev->modifiers() == Qt::ControlModifier)
+		{
+			filesClick(_client);
+		}
+
+		/*if (ev->key() > Qt::Key_2 && ev->key() <= Qt::Key_9)
+		{
+			int k = ev->key() - Qt::Key_3;
+			if (k < _displayInfo.screens.size())
+			{
+				event_bus::post(OpenScreenEvent(_client, _displayInfo.screens[k]));
+			}
+		}*/
+
+
+	}
+	return false;
+}

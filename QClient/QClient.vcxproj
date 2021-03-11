@@ -184,7 +184,7 @@
     <ClCompile Include="..\lib\rd\codec\mycodec\my_decoder.cpp" />
     <ClCompile Include="..\lib\rd\codec\mycodec\my_encoder.cpp" />
     <ClCompile Include="..\lib\rd\crypto\RsaEncryptor.cpp" />
-    <ClCompile Include="..\lib\rd\events\proto\serialize.pb.cc" />
+    <ClCompile Include="..\lib\rd\events\protoWin\serialize.pb.cc" />
     <ClCompile Include="..\lib\rd\files\file.cpp" />
     <ClCompile Include="..\lib\rd\files\FileBuffer.cpp" />
     <ClCompile Include="..\lib\rd\net\ClientSessionHandler.cpp" />

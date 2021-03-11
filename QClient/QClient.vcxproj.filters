@@ -140,9 +140,6 @@
     <ClCompile Include="..\lib\rd\crypto\RsaEncryptor.cpp">
       <Filter>lib</Filter>
     </ClCompile>
-    <ClCompile Include="..\lib\rd\events\proto\serialize.pb.cc">
-      <Filter>lib</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\rd\files\FileBuffer.cpp">
       <Filter>lib</Filter>
     </ClCompile>
@@ -156,6 +153,9 @@
       <Filter>lib</Filter>
     </ClCompile>
     <ClCompile Include="..\lib\rd\net\PacketHelper.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\rd\events\protoWin\serialize.pb.cc">
       <Filter>lib</Filter>
     </ClCompile>
   </ItemGroup>
