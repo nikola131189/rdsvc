@@ -108,6 +108,7 @@ QClient::QClient(QWidget *parent)
 		});
 
 
+
 	QObject::connect(_homeWidget->control(), &ClientControlWidget::changeClient, [this](const Rd::Client& cl) {
 		setWindowTitle(QString::fromUtf8(cl.name.c_str()));
 		});
