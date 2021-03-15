@@ -2,7 +2,7 @@
 
 Storage::Storage() 
 	:
-	_db("db.db")
+	_db("C:\\Users\\user\\source\\repos\\rd\\x64\\Release\\db.db")
 {
 	_db <<
 		"create table if not exists servers ("

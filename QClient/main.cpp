@@ -16,7 +16,7 @@ Q_DECLARE_METATYPE(Rd::TerminalEvent)
 Q_DECLARE_METATYPE(Rd::ClipboardEvent)
 Q_DECLARE_METATYPE(Rd::ConnectionOpen)
 Q_DECLARE_METATYPE(Rd::ConnectionError)
-void networkLoop();
+
 
 int main(int argc, char *argv[])
 {
@@ -58,63 +58,3 @@ int main(int argc, char *argv[])
 
 
 
-
-
-void networkLoop()
-{
-	Rd::Config cfg("C:\\Users\\user\\source\\repos\\rd\\x64\\Release\\config.cfg");
-
-	cfg.name = "";
-
-	Rd::Inet::init(cfg.name, utility::gen_uuid());
-
-
-	boost::asio::io_context ctx(1);
-
-	bool running = true;
-	boost::asio::signal_set sign(ctx, SIGINT, SIGTERM);
-	sign.async_wait([&](auto, auto) {
-		running = false;
-		ctx.stop();
-		});
-
-
-	std::shared_ptr<Net::Connection> conn1 = nullptr, conn2 = nullptr;
-
-	while (running)
-	{
-
-		if (!conn1 || utility::get_tick_count() - conn1->lastActive() > cfg.connectionTimeout)
-		{
-			for (Net::Connector* c : cfg.connectors)
-			{
-				boost::system::error_code ec;
-				auto sock = c->connect(ctx, ec);
-				if (!ec)
-				{
-					conn1 = std::make_shared<Net::Connection>(Rd::Inet::sess1(), std::move(sock), cfg.secret, crypto::RsaEncryptor());
-					conn1->start();
-					break;
-				}
-			}
-		}
-
-
-		if (!conn2 || utility::get_tick_count() - conn2->lastActive() > cfg.connectionTimeout)
-		{
-			for (Net::Connector* c : cfg.connectors)
-			{
-				boost::system::error_code ec;
-				auto sock = c->connect(ctx, ec);
-				if (!ec)
-				{
-					conn2 = std::make_shared<Net::Connection>(Rd::Inet::sess2(), std::move(sock), cfg.secret, crypto::RsaEncryptor());
-					conn2->start();
-					break;
-				}
-			}
-		}
-
-		ctx.run_for(std::chrono::milliseconds(1000));
-	}
-}
