@@ -213,6 +213,7 @@
     <ClCompile Include="TransferWidget.cpp" />
     <ClCompile Include="widgets\AbstractDialogWidget.cpp" />
     <ClCompile Include="widgets\GlassWidget.cpp" />
+    <ClCompile Include="widgets\InputDialogWidget.cpp" />
     <ClCompile Include="widgets\ItemDelegate.cpp" />
     <ClCompile Include="widgets\LineEdit.cpp" />
     <ClCompile Include="widgets\ScrollableButtonGroup.cpp" />
@@ -244,6 +245,7 @@
     <QtUic Include="TransferWidget.ui" />
     <QtUic Include="widgets\AbstractDialogWidget.ui" />
     <QtUic Include="widgets\GlassWidget.ui" />
+    <QtUic Include="widgets\InputDialogWidget.ui" />
     <QtUic Include="widgets\LineEdit.ui" />
     <QtUic Include="widgets\ScrollableButtonGroup.ui" />
     <QtUic Include="widgets\ScrollContainer.ui" />
@@ -293,6 +295,7 @@
   <ItemGroup>
     <ClInclude Include="AbstractTransfer.h" />
     <ClInclude Include="FileTransfer.h" />
+    <QtMoc Include="widgets\InputDialogWidget.h" />
     <QtMoc Include="widgets\GlassWidget.h" />
     <QtMoc Include="widgets\AbstractDialogWidget.h" />
     <QtMoc Include="widgets\ScrollableButtonGroup.h" />

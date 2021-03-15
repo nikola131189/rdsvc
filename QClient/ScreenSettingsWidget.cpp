@@ -19,8 +19,9 @@ ScreenSettingsWidget::ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *p
 
 	ui.setupUi(this);
 
-
-	l1 = new QGridLayout();
+	QWidget* w1 = new QWidget(this);
+	l1 = new QGridLayout(this);
+	w1->setLayout(l1);
 	{
 		_resolutionWidget = new StringListWidget(QStringList(), "resolution", this);
 		_resolutionWidget->setMinimumWidth(150);
@@ -65,8 +66,9 @@ ScreenSettingsWidget::ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *p
 		l1->addWidget(_quantizationWidget, 0, 5);
 	}
 
-
-	l2 = new QHBoxLayout();
+	QWidget* w2 = new QWidget(this);
+	l2 = new QHBoxLayout(this);
+	w2->setLayout(l2);
 	{
 		_spyModeWidget = new QCheckBox("spy mode", this);
 		_disableInputWidget = new QCheckBox("disable input", this);
@@ -83,7 +85,7 @@ ScreenSettingsWidget::ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *p
 
 
 
-	l3 = new QHBoxLayout();
+	l3 = new QHBoxLayout(this);
 	QWidget* w3 = new QWidget(this);
 	{
 		QPushButton* btn = new QPushButton("ok", this);
@@ -129,10 +131,10 @@ ScreenSettingsWidget::ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *p
 	QLabel* title = new QLabel("Screen settings", this);
 	title->setAlignment(Qt::AlignCenter);
 
-	l5 = new QVBoxLayout();
+	l5 = new QVBoxLayout(this);
 	l5->addWidget(title);
-	l5->addLayout(l1);
-	l5->addLayout(l2);
+	l5->addWidget(w1);
+	l5->addWidget(w2);
 	l5->addWidget(w3);
 
 	//l1->setRowMinimumHeight(0, 250);

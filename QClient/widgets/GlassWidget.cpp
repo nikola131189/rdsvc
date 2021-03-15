@@ -88,9 +88,13 @@ void GlassWidget::showEvent(QShowEvent* event)
 	QGraphicsBlurEffect* blur = new QGraphicsBlurEffect(this);
 	blur->setBlurHints(QGraphicsBlurEffect::BlurHint::PerformanceHint);
 	blur->setBlurRadius(10);
-	setGraphicsEffect(blur);
+	_widget->setParent(0);
+	setGraphicsEffect(blur);*/
 
-	_widget->setGraphicsEffect(eff);*/
+	
 	updatePosition();
 	activateWindow();
+
+
+
 }

@@ -18,6 +18,7 @@
 #include <QKeyEvent>
 #include <QMouseEvent>
 #include "widgets/LineEdit.h"
+#include "widgets/InputDialogWidget.h"
 
 class FilesProxyModel;
 class FilesDelegate;

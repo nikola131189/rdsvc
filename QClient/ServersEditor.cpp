@@ -261,7 +261,7 @@ void ServerInfoDelegate::paintClient(QPainter* painter, const QStyleOptionViewIt
 	switch (index.column())
 	{
 	case 0:
-		painter->drawText(r.left(), r.top(), r.width(), r.height(), Qt::AlignCenter | Qt::AlignVCenter, serv.description.c_str());
+		painter->drawText(r.left(), r.top(), r.width(), r.height(), Qt::AlignLeft | Qt::AlignVCenter, serv.description.c_str());
 		break;
 	case 1:
 		painter->drawText(r.left(), r.top(), r.width(), r.height(), Qt::AlignLeft | Qt::AlignVCenter, serv.address1.c_str());

@@ -272,7 +272,7 @@ void FilesWidget::do_remove()
 	std::list<files::file_info_t> l = selected();
 	for (auto it = l.begin(); it != l.end(); it++)
 		_model->remove(it->path);
-	dir(_path);
+	QTimer::singleShot(500, [this]() {dir(_path); });
 }
 
 void FilesWidget::do_copy()
@@ -283,26 +283,29 @@ void FilesWidget::do_copy()
 
 void FilesWidget::do_mkdir()
 {
-	bool ok;
-	QString str = QInputDialog::getText(this, "new dir", "", QLineEdit::Normal, "", &ok);
-	if (ok && !str.isEmpty())
-	{
-		_model->mkdir(_path / str.toStdString());
-		dir(_path);
-	}
+	Gui::Dialog::makeInput("make directory", "new dir", this, [this](QString text, bool ok) {
+		if (ok)
+		{
+			_model->mkdir(_path / text.toStdString());
+			QTimer::singleShot(500, [this]() {dir(_path);});
+			
+		}
+		_tree->setFocus();
+	});
 }
 
 void FilesWidget::do_rename()
 {
 	std::list<files::file_info_t> l = selected();
 	if (l.empty()) return;
-	bool ok;
-	QString str = QInputDialog::getText(this, "rename", "", QLineEdit::Normal, QString::fromStdWString(l.front().path.filename()), &ok);
-	if (ok && !str.isEmpty())
-	{
-		_model->rename(l.front().path, _path / str.toStdString());
-		dir(_path);
-	}
+	Gui::Dialog::makeInput("rename", QString::fromStdWString(l.front().path.filename()), this, [this, l](QString text, bool ok) {
+		if (ok)
+		{
+			_model->rename(l.front().path, _path / text.toStdString());
+			QTimer::singleShot(500, [this]() {dir(_path); });
+		}
+		_tree->setFocus();
+	});
 }
 
 

@@ -182,6 +182,9 @@
     <ClCompile Include="widgets\GlassWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="widgets\InputDialogWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="styles.css" />
@@ -274,6 +277,9 @@
     <QtMoc Include="widgets\GlassWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="widgets\InputDialogWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="widgets\TextEdit.ui">
@@ -346,6 +352,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="widgets\GlassWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\InputDialogWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

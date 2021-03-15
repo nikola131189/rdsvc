@@ -41,7 +41,8 @@ HomeWidget::HomeWidget(QWidget *parent)
 
 	_splitter->addWidget(_splitter0);
 	_splitter->addWidget(_splitter1);
-	_splitter->setStretchFactor(1, 100);
+	_splitter->addWidget(new QWidget(this));
+	_splitter->setStretchFactor(2, 100);
 
 
 
