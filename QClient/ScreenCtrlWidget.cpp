@@ -146,6 +146,8 @@ bool ScreenCtrlWidget::eventFilter(QObject* object, QEvent* event)
 
 	if (event->type() == QEvent::MouseMove)
 	{
+		if (ev->y() < 20)
+			;//	upperPanelShow();
 		e.type = Rd::ActionEvent::Mouse::move;
 		mouseEventSignal(e);
 		return true;

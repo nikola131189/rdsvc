@@ -82,28 +82,28 @@
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PreprocessorDefinitions>__STDC_CONSTANT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\widgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\widgets;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PreprocessorDefinitions>__STDC_CONSTANT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\widgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\widgets;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PreprocessorDefinitions>__STDC_CONSTANT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\widgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\widgets;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PreprocessorDefinitions>__STDC_CONSTANT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\widgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\widgets;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="QtSettings">
@@ -202,6 +202,7 @@
     <ClCompile Include="FileTransfer.cpp" />
     <ClCompile Include="HomeWidget.cpp" />
     <ClCompile Include="ScreenCtrlWidget.cpp" />
+    <ClCompile Include="ScreenPanel.cpp" />
     <ClCompile Include="ScreenSettingsWidget.cpp" />
     <ClCompile Include="ScreenWidget.cpp" />
     <ClCompile Include="ServerListWidget.cpp" />
@@ -236,6 +237,7 @@
     <ClCompile Include="QClient.cpp" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="ScreenCtrlWidget.ui" />
+    <QtUic Include="ScreenPanel.ui" />
     <QtUic Include="ScreenSettingsWidget.ui" />
     <QtUic Include="ScreenWidget.ui" />
     <QtUic Include="ServerListWidget.ui" />
@@ -301,6 +303,7 @@
     <QtMoc Include="widgets\ScrollableButtonGroup.h" />
     <QtMoc Include="widgets\ScrollContainer.h" />
     <QtMoc Include="ServerListWidget.h" />
+    <QtMoc Include="ScreenPanel.h" />
     <ClInclude Include="ServerInfo.h" />
     <QtMoc Include="ServersEditor.h" />
     <QtMoc Include="ServersModel.h" />

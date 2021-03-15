@@ -59,12 +59,15 @@ ServerListWidget::ServerListWidget(QWidget *parent)
 	_glass->hide();
 
 	QObject::connect(_serversWidget, &ScrollableButtonGroup::idClicked, [this](int id) {
-
-
 		if (_conn1) _conn1->stop();
 		if (_conn2) _conn2->stop();
 
-		if (_connector) _connector->cancel();
+		if (_connector)
+			_connector->cancel();
+
+		std::unique_lock<std::mutex> lk(_mut);
+		Rd::Inet::init("", _serverInfo.imprint);
+
 		_connector = nullptr;
 		_serverInfo = _model->servers()[id];
 		if (_serverInfo.connectionType == "tcp")
@@ -91,37 +94,32 @@ ServerListWidget::ServerListWidget(QWidget *parent)
 
 ServerListWidget::~ServerListWidget()
 {
-	exit(0);
 	_running = false;
-	if (_conn1) _conn1->stop();
-	if (_conn2) _conn2->stop();
-	_ctx.stop();
-	if(_thr.joinable())
-		_thr.join();
+	//if (_conn1) _conn1->stop();
+	//if (_conn2) _conn2->stop();
+	_ctx->stop();
+	_thr.detach();
+	/*if(_thr.joinable())
+		_thr.join();*/
 }
 
 void ServerListWidget::loop()
 {
-
-	Rd::Inet::init("", utility::gen_uuid());
-
-	boost::asio::signal_set sign(_ctx, SIGINT, SIGTERM);
-	sign.async_wait([&](auto, auto) {
-		_running = false;
-		_ctx.stop();
-		});
-
+	_ctx = new boost::asio::io_context;
+	boost::asio::signal_set sign(*_ctx, SIGINT, SIGTERM);
+	sign.async_wait([&](auto, auto) {});
+		
 
 	while (_running)
 	{
 		if (_connector)
 		{
-				
+			std::unique_lock<std::mutex> lk(_mut);
 			if (!_conn1 || !_conn1->isOpen() || utility::get_tick_count() - _conn1->lastActive() > 5000)
 			{
 
 				boost::system::error_code ec;
-				auto sock = _connector->connect(_ctx, ec);
+				auto sock = _connector->connect(*_ctx, ec);
 				if (!ec)
 				{
 					_conn1 = std::make_shared<Net::Connection>(Rd::Inet::sess1(), std::move(sock), _serverInfo.secret, crypto::RsaEncryptor());
@@ -133,7 +131,7 @@ void ServerListWidget::loop()
 			if (!_conn2 || !_conn2->isOpen() || utility::get_tick_count() - _conn2->lastActive() > 5000)
 			{
 				boost::system::error_code ec;
-				auto sock = _connector->connect(_ctx, ec);
+				auto sock = _connector->connect(*_ctx, ec);
 				if (!ec)
 				{
 					_conn2 = std::make_shared<Net::Connection>(Rd::Inet::sess2(), std::move(sock), _serverInfo.secret, crypto::RsaEncryptor());
@@ -141,6 +139,6 @@ void ServerListWidget::loop()
 				}
 			}
 		}
-		_ctx.run_for(std::chrono::milliseconds(500));
+		_ctx->run_for(std::chrono::milliseconds(500));
 	}
 }

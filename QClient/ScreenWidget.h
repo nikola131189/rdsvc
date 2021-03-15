@@ -11,7 +11,7 @@
 #include <QMimeData>
 #include <QThread>
 #include "widgets/GlassWidget.h"
-
+#include "ScreenPanel.h"
 class ScreenWidget :
 	public TabItem
 {
@@ -35,6 +35,7 @@ private:
 	void sendOpen(const codec::VideoFormat& f);
 	void sendClose();
 	void prepareToDestroy();
+	void resizeEvent(QResizeEvent* event);
 private:
 	Rd::Client _client;
 	Rd::ScreenInfo _screenInfo;
@@ -49,6 +50,8 @@ private:
 	boost::signals2::connection _screenConn;
 	boost::signals2::connection _notifyClipboardConn;
 	GlassWidget* _glass;
+
+	ScreenPanel* _upperPanel;
 private:
 	Ui::ScreenWidget ui;
 };

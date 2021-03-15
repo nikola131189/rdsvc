@@ -9,9 +9,10 @@ ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
 	_tree->setItemDelegate(new ServerInfoDelegate);
 	//_tree->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	_tree->setRootIsDecorated(false);
-	_model->setColumnTitles({ "description", "Address1", "Address2", "imprint", "type", "port1", "port2" });
-
-	resize(800, 600);
+	_tree->header()->hide();
+	//_model->setColumnTitles({ "description", "Address1", "Address2", "imprint", "type", "port1", "port2" });
+	_model->setColumnTitles({""});
+	resize(800, 400);
 
 	QObject::connect(_tree->selectionModel(), &QItemSelectionModel::selectionChanged, [this](const QItemSelection& selected, const QItemSelection& deselected) {
 		
@@ -119,12 +120,12 @@ ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
 	QWidget* formWidget = new QWidget(this);
 	formWidget->setLayout(_formLayout);
 
-	QSplitter* splitter = new QSplitter(Qt::Vertical, this);
-	
-	splitter->addWidget(_tree);
+	QSplitter* splitter = new QSplitter(Qt::Horizontal, this);
 	splitter->addWidget(formWidget);
+	splitter->addWidget(_tree);
 	
-	splitter->setSizes({ 300, 500 });
+	
+	splitter->setSizes({ 300, 100 });
 
 	QLabel* label = new QLabel(this);
 	label->setText("Settings");

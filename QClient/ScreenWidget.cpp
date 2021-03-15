@@ -55,6 +55,18 @@ ScreenWidget::ScreenWidget(const Rd::Client& cl, const Rd::ScreenInfo& scr, QWid
 
 	_screenConn = EventBus::subscribe<Rd::VideoEvent>(std::bind(&ScreenWidget::notifyScreen, this, std::placeholders::_1));
 	_notifyClipboardConn = EventBus::subscribe<Rd::ClipboardEvent>(std::bind(&ScreenWidget::notifyClipboard, this, std::placeholders::_1));
+
+
+	_upperPanel = new ScreenPanel(_screenCtrlWidget);
+	_upperPanel->hide();
+
+	QObject::connect(_screenCtrlWidget, &ScreenCtrlWidget::upperPanelShow, [this]() {
+		_upperPanel->show();
+	});
+
+	QObject::connect(_upperPanel, &ScreenPanel::settingsSignal, [this]() {_glass->show(); });
+
+	_glass->show();
 }
 
 ScreenWidget::~ScreenWidget()
@@ -105,7 +117,7 @@ void ScreenWidget::onNotifyClipboard(const Rd::ClipboardEvent& ev)
 
 void ScreenWidget::showSettings(const QPoint& pos)
 {
-	_glass->show();
+	
 }
 
 void ScreenWidget::showEvent(QShowEvent* event)
@@ -153,6 +165,13 @@ void ScreenWidget::prepareToDestroy()
 	_screenConn.disconnect();
 	_notifyClipboardConn.disconnect();
 	//Obs::unsubscribe((ObServer<Rd::ClipboardEvent>*)this);
+}
+
+void ScreenWidget::resizeEvent(QResizeEvent* event)
+{
+	int x = (width() - _upperPanel->width()) / 2;
+	int y = 0;
+	_upperPanel->move(x, y);
 }
 
 

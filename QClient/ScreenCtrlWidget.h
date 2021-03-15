@@ -22,6 +22,7 @@ public:
 signals:
 	void keybdEventSignal(const Rd::ActionEvent::Keybd& k);
 	void mouseEventSignal(const Rd::ActionEvent::Mouse& m);
+	void upperPanelShow();
 public slots:
 	void setScreen(const QImage& img);
 	void setCursor(const Rd::CursorInfo& curs);

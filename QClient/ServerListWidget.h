@@ -34,9 +34,11 @@ private:
 	bool _running = true;
 	
 	std::shared_ptr<Net::Connection> _conn1 = nullptr, _conn2 = nullptr;
-	boost::asio::io_context _ctx;
+	boost::asio::io_context* _ctx;
 	std::thread _thr;
 	ServersEditor* _serversEditor;
 	ServersModel* _model;
 	GlassWidget* _glass;
+
+	std::mutex _mut;
 };

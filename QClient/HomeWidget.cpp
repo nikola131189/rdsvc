@@ -10,13 +10,16 @@ HomeWidget::HomeWidget(QWidget *parent)
 	_clientListWidget = new ClientListWidgets(this);
 	
 	_clientControlWidget = new ClientControlWidget(this);
-	//_clientControlWidget->setFocusPolicy(Qt::NoFocus);
+	
+	QWidget* w0 = new QWidget(this);
 
 	_splitter = new QSplitter(Qt::Horizontal, this);
 
 	_edit = new QPlainTextEdit(this);
 	_edit->setReadOnly(true);
 	_edit->setFocusPolicy(Qt::NoFocus);
+	_serverListWidget->setFocusPolicy(Qt::NoFocus);
+	_clientControlWidget->setFocusPolicy(Qt::NoFocus);
 
 
 	/*QVBoxLayout* l0 = new  QVBoxLayout(this);
@@ -41,7 +44,7 @@ HomeWidget::HomeWidget(QWidget *parent)
 
 	_splitter->addWidget(_splitter0);
 	_splitter->addWidget(_splitter1);
-	_splitter->addWidget(new QWidget(this));
+	_splitter->addWidget(w0);
 	_splitter->setStretchFactor(2, 100);
 
 
@@ -118,5 +121,5 @@ void HomeWidget::onConnectionOpen(const Rd::ConnectionOpen& ev)
 
 void HomeWidget::showEvent(QShowEvent* event)
 {
-	//QTimer::singleShot(0, _clientListWidget, SLOT(setFocus()));
+	QTimer::singleShot(0, _clientListWidget, SLOT(setFocus()));
 }

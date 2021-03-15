@@ -8,7 +8,7 @@ InputDialogWidget::InputDialogWidget(const QString& title, const QString& text, 
 	_edit->setText(text);
 
 	QLabel* label = new QLabel(title, this);
-	//label->setAlignment(Qt::AlignCenter);
+	label->setAlignment(Qt::AlignCenter);
 
 	QHBoxLayout* l1 = new QHBoxLayout(this);
 	QWidget* w1 = new QWidget(this);
