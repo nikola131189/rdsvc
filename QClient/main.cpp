@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 	qRegisterMetaType<Rd::ConnectionOpen>();
 	qRegisterMetaType<Rd::ConnectionError>();
 
-	new std::thread(networkLoop);
+	//new std::thread(networkLoop);
 
     QApplication a(argc, argv);
 
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 
 void networkLoop()
 {
-	Rd::Config cfg("config.cfg");
+	Rd::Config cfg("C:\\Users\\user\\source\\repos\\rd\\x64\\Release\\config.cfg");
 
 	cfg.name = "";
 

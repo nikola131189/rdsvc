@@ -45,6 +45,9 @@ namespace Net
 			return std::move(sock);
 		}
 
+		std::string address() { return _adr; }
+
+		void cancel() {}
 
 	private:
 		std::string _adr;

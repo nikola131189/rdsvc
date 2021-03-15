@@ -297,8 +297,9 @@ void ClientsListDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
 	auto it = (TreeItem*)ind.internalPointer();
 
 	
-	if (option.state & QStyle::State_Selected || _selRow == ind.row())
+	if (option.state & QStyle::State_Selected || ind.row() == _selRow)
 	{
+		r.setWidth(((QAbstractItemView*)option.widget)->viewport()->width());
 		painter->fillRect(r, option.palette.highlight());
 	}
 

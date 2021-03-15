@@ -8,6 +8,9 @@
 #include <QKeyEvent>
 #include <QButtonGroup>
 #include <rd/rd.h>
+#include <QButtonGroup>
+#include <QLabel>
+#include "widgets/ScrollableButtonGroup.h"
 
 class ClientControlWidget : public QWidget
 {
@@ -28,13 +31,12 @@ signals:
 public slots:
 	void onDispEvent(const Rd::DisplayEvent& ev);
 private:
-	void clearLayout();
 	void initWidgets();
 	bool eventFilter(QObject* watched, QEvent* event);
 private:
 	Ui::ClientControlWidget ui;
 	Rd::DisplayInfo _displayInfo;
 	QVBoxLayout* _layout;
-	std::vector<QPushButton*> _btns;
+	ScrollableButtonGroup* _btns;
 	Rd::Client _client;
 };

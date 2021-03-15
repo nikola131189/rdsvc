@@ -10,6 +10,8 @@
 #include <QPlainTextEdit>
 #include "widgets/TabItem.h"
 #include <QTime>
+#include "ServerListWidget.h"
+
 class HomeWidget : public TabItem
 {
 	Q_OBJECT
@@ -28,9 +30,10 @@ public slots:
 	void onConnectionOpen(const Rd::ConnectionOpen& ev);
 private:
 	void showEvent(QShowEvent* event);
-	QSplitter* _splitter;
+	QSplitter* _splitter, *_splitter1, *_splitter0;
 	QPlainTextEdit* _edit;
 	Ui::HomeWidget ui;
 	ClientListWidgets* _clientListWidget;
 	ClientControlWidget* _clientControlWidget;
+	ServerListWidget* _serverListWidget;
 };

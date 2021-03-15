@@ -5,7 +5,7 @@ ScreenWidget::ScreenWidget(const Rd::Client& cl, const Rd::ScreenInfo& scr, QWid
 {
 	ui.setupUi(this);
 	_screenSettings = new ScreenSettingsWidget(scr, this);
-	_screenSettings->setWindowFlags(Qt::Popup);
+	_glass = new GlassWidget(_screenSettings, this);
 
 
 	QObject::connect(_screenSettings, &ScreenSettingsWidget::paramChanged, [&](const codec::VideoFormat& fmt) {
@@ -13,9 +13,6 @@ ScreenWidget::ScreenWidget(const Rd::Client& cl, const Rd::ScreenInfo& scr, QWid
 		sendOpen(fmt);
 		});
 
-	QObject::connect(_screenSettings, &ScreenSettingsWidget::hideSettings, [&]() {
-		_screenSettings->hide();
-		});
 
 
 	_screenCtrlWidget = new ScreenCtrlWidget(this);
@@ -108,8 +105,7 @@ void ScreenWidget::onNotifyClipboard(const Rd::ClipboardEvent& ev)
 
 void ScreenWidget::showSettings(const QPoint& pos)
 {
-	_screenSettings->move(pos);
-	_screenSettings->show();
+	_glass->show();
 }
 
 void ScreenWidget::showEvent(QShowEvent* event)

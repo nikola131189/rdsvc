@@ -158,6 +158,30 @@
     <ClCompile Include="..\lib\rd\events\protoWin\serialize.pb.cc">
       <Filter>lib</Filter>
     </ClCompile>
+    <ClCompile Include="ServerListWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServersEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServersModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\ScrollContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\ScrollableButtonGroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\AbstractDialogWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\GlassWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="styles.css" />
@@ -229,6 +253,27 @@
     <QtMoc Include="TerminalWidget.h">
       <Filter>Terminal</Filter>
     </QtMoc>
+    <QtMoc Include="ServerListWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ServersEditor.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ServersModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\ScrollContainer.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\ScrollableButtonGroup.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\AbstractDialogWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\GlassWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="widgets\TextEdit.ui">
@@ -285,6 +330,24 @@
     <QtUic Include="TerminalWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="ServerListWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ServersEditor.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\ScrollContainer.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\ScrollableButtonGroup.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\AbstractDialogWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\GlassWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -298,6 +361,12 @@
     </ClInclude>
     <ClInclude Include="TerminalHistory.h">
       <Filter>Terminal</Filter>
+    </ClInclude>
+    <ClInclude Include="Storage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerInfo.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -5,22 +5,46 @@ HomeWidget::HomeWidget(QWidget *parent)
 {
 	ui.setupUi(this);
 
+	_serverListWidget = new ServerListWidget(this);
+
 	_clientListWidget = new ClientListWidgets(this);
 	
 	_clientControlWidget = new ClientControlWidget(this);
-	_clientControlWidget->setFocusPolicy(Qt::NoFocus);
+	//_clientControlWidget->setFocusPolicy(Qt::NoFocus);
 
-	_splitter = new QSplitter(this);
+	_splitter = new QSplitter(Qt::Horizontal, this);
 
-	_splitter->setOrientation(Qt::Horizontal);
 	_edit = new QPlainTextEdit(this);
 	_edit->setReadOnly(true);
 	_edit->setFocusPolicy(Qt::NoFocus);
 
-	_splitter->addWidget(_clientControlWidget);
-	_splitter->addWidget(_clientListWidget);
-	_splitter->addWidget(_edit);
-	_splitter->setStretchFactor(2, 100);
+
+	/*QVBoxLayout* l0 = new  QVBoxLayout(this);
+	l0->addWidget(_serverListWidget);
+	l0->addWidget(_clientControlWidget);
+	l0->setAlignment(Qt::AlignTop);
+	l0->setMargin(0);
+	QWidget* w = new QWidget(this);
+	w->setLayout(l0);*/
+
+	_splitter0 = new QSplitter(Qt::Vertical, this);
+	_splitter0->addWidget(_clientControlWidget);
+	_splitter0->addWidget(_serverListWidget);
+
+	_splitter0->setStretchFactor(0, 100);
+
+	_splitter1 = new QSplitter(Qt::Vertical, this);
+	_splitter1->addWidget(_clientListWidget);
+	_splitter1->addWidget(_edit);
+	_splitter1->setStretchFactor(0, 100);
+
+
+	_splitter->addWidget(_splitter0);
+	_splitter->addWidget(_splitter1);
+	_splitter->setStretchFactor(1, 100);
+
+
+
 
 	QHBoxLayout* l = new QHBoxLayout;
 	l->setMargin(0);
@@ -50,6 +74,8 @@ void HomeWidget::getState(QSettings& sett)
 {
 	sett.setValue("HomeWidget/clientsList", _clientListWidget->getState());
 	sett.setValue("HomeWidget/splitter", _splitter->saveState());
+	sett.setValue("HomeWidget/splitter1", _splitter1->saveState());
+	sett.setValue("HomeWidget/splitter0", _splitter0->saveState());
 	//sett.setValue("HomeWidget/serverList", _serverListWidget->getState());
 }
 
@@ -59,28 +85,33 @@ void HomeWidget::setState(const QSettings& sett)
 	_clientListWidget->setState(sett.value("HomeWidget/clientsList").toByteArray());
 	//_serverListWidget->setState(sett.value("HomeWidget/serverList").toByteArray());
 	_splitter->restoreState(sett.value("HomeWidget/splitter").toByteArray());
+	_splitter1->restoreState(sett.value("HomeWidget/splitter1").toByteArray());
+	_splitter0->restoreState(sett.value("HomeWidget/splitter0").toByteArray());
 }
 
 
 void HomeWidget::onConnectionError(const Rd::ConnectionError& ev)
 {
+	_clientControlWidget->setClient({});
+	_edit->insertPlainText("\n");
 	_edit->moveCursor(QTextCursor::End);
-
+	
 	QTime t = QTime::currentTime();
 	_edit->insertPlainText(t.toString(Qt::ISODateWithMs) + "  ");
 
-	_edit->insertPlainText(QString::fromLocal8Bit(ev.msg.c_str()) + "\n\n");
+	_edit->insertPlainText(QString::fromLocal8Bit(ev.msg.c_str()));
+
 	_edit->moveCursor(QTextCursor::End);
 }
 
 void HomeWidget::onConnectionOpen(const Rd::ConnectionOpen& ev)
 {
+	_edit->insertPlainText("\n");
 	_edit->moveCursor(QTextCursor::End);
-
 	QTime t = QTime::currentTime();
 	_edit->insertPlainText(t.toString(Qt::ISODateWithMs) + "  ");
 
-	_edit->insertPlainText("connected\n\n");
+	_edit->insertPlainText("connected");
 	_edit->moveCursor(QTextCursor::End);
 }
 

@@ -2,7 +2,7 @@
 
 ScreenSettingsWidget::ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *parent)
 	: _screenInfo(scr),
-	QWidget(parent),
+	AbstractDialogWidget(parent),
 	_disableInput(false),
 	_clipboardSync(true),
 	_spyMode(false),
@@ -84,12 +84,13 @@ ScreenSettingsWidget::ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *p
 
 
 	l3 = new QHBoxLayout();
+	QWidget* w3 = new QWidget(this);
 	{
 		QPushButton* btn = new QPushButton("ok", this);
 		QObject::connect(btn, &QPushButton::clicked, [&](){
 			setState();
 			paramChanged(_fmt);
-			hideSettings();
+			hideDialog();
 		});
 
 
@@ -104,7 +105,7 @@ ScreenSettingsWidget::ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *p
 
 		QPushButton* btn3 = new QPushButton("cancel", this);
 		QObject::connect(btn3, &QPushButton::clicked, [&](){
-			hideSettings();
+			hideDialog();
 		});
 
 
@@ -112,7 +113,8 @@ ScreenSettingsWidget::ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *p
 		l3->addWidget(btn);
 		l3->addWidget(btn2);
 		l3->addWidget(btn3);
-		l3->setAlignment(Qt::AlignLeft);
+		//l3->setAlignment(Qt::AlignLeft);
+		w3->setLayout(l3);
 	}
 
 
@@ -124,15 +126,21 @@ ScreenSettingsWidget::ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *p
 	_fmt.threadCount = 4;
 
 
+	QLabel* title = new QLabel("Screen settings", this);
+	title->setAlignment(Qt::AlignCenter);
+
 	l5 = new QVBoxLayout();
+	l5->addWidget(title);
 	l5->addLayout(l1);
 	l5->addLayout(l2);
-	l5->addLayout(l3);	
+	l5->addWidget(w3);
 
-	l1->setRowMinimumHeight(0, 200);
+	//l1->setRowMinimumHeight(0, 250);
 	
 	setLayout(l5);
 
+	this->setMinimumWidth(800);
+	this->setMinimumHeight(500);
 }
 
 ScreenSettingsWidget::~ScreenSettingsWidget()
@@ -256,4 +264,5 @@ void ScreenSettingsWidget::loadState()
 void ScreenSettingsWidget::showEvent(QShowEvent* event)
 {
 	loadState();
+	AbstractDialogWidget::showEvent(event);
 }

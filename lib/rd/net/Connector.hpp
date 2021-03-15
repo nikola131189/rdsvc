@@ -10,6 +10,8 @@ namespace Net
 	{
 	public:
 		virtual ip::tcp::socket connect(boost::asio::io_context& ctx, boost::system::error_code& ec) = 0;
+		virtual std::string address() = 0;
+		virtual void cancel() = 0;
 		virtual ~Connector() {}
 	};
 

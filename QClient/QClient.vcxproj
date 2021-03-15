@@ -82,24 +82,28 @@
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PreprocessorDefinitions>__STDC_CONSTANT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\widgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PreprocessorDefinitions>__STDC_CONSTANT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\widgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PreprocessorDefinitions>__STDC_CONSTANT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\widgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PreprocessorDefinitions>__STDC_CONSTANT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\widgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'" Label="QtSettings">
@@ -200,11 +204,19 @@
     <ClCompile Include="ScreenCtrlWidget.cpp" />
     <ClCompile Include="ScreenSettingsWidget.cpp" />
     <ClCompile Include="ScreenWidget.cpp" />
+    <ClCompile Include="ServerListWidget.cpp" />
+    <ClCompile Include="ServersEditor.cpp" />
+    <ClCompile Include="ServersModel.cpp" />
+    <ClCompile Include="Storage.cpp" />
     <ClCompile Include="TerminalCommandWidget.cpp" />
     <ClCompile Include="TerminalWidget.cpp" />
     <ClCompile Include="TransferWidget.cpp" />
+    <ClCompile Include="widgets\AbstractDialogWidget.cpp" />
+    <ClCompile Include="widgets\GlassWidget.cpp" />
     <ClCompile Include="widgets\ItemDelegate.cpp" />
     <ClCompile Include="widgets\LineEdit.cpp" />
+    <ClCompile Include="widgets\ScrollableButtonGroup.cpp" />
+    <ClCompile Include="widgets\ScrollContainer.cpp" />
     <ClCompile Include="widgets\SliderLabelWidget.cpp" />
     <ClCompile Include="widgets\StringListWidget.cpp" />
     <ClCompile Include="widgets\TabItem.cpp" />
@@ -225,10 +237,16 @@
     <QtUic Include="ScreenCtrlWidget.ui" />
     <QtUic Include="ScreenSettingsWidget.ui" />
     <QtUic Include="ScreenWidget.ui" />
+    <QtUic Include="ServerListWidget.ui" />
+    <QtUic Include="ServersEditor.ui" />
     <QtUic Include="TerminalCommandWidget.ui" />
     <QtUic Include="TerminalWidget.ui" />
     <QtUic Include="TransferWidget.ui" />
+    <QtUic Include="widgets\AbstractDialogWidget.ui" />
+    <QtUic Include="widgets\GlassWidget.ui" />
     <QtUic Include="widgets\LineEdit.ui" />
+    <QtUic Include="widgets\ScrollableButtonGroup.ui" />
+    <QtUic Include="widgets\ScrollContainer.ui" />
     <QtUic Include="widgets\SliderLabelWidget.ui" />
     <QtUic Include="widgets\StringListWidget.ui" />
     <QtUic Include="widgets\TabItem.ui" />
@@ -275,6 +293,15 @@
   <ItemGroup>
     <ClInclude Include="AbstractTransfer.h" />
     <ClInclude Include="FileTransfer.h" />
+    <QtMoc Include="widgets\GlassWidget.h" />
+    <QtMoc Include="widgets\AbstractDialogWidget.h" />
+    <QtMoc Include="widgets\ScrollableButtonGroup.h" />
+    <QtMoc Include="widgets\ScrollContainer.h" />
+    <QtMoc Include="ServerListWidget.h" />
+    <ClInclude Include="ServerInfo.h" />
+    <QtMoc Include="ServersEditor.h" />
+    <QtMoc Include="ServersModel.h" />
+    <ClInclude Include="Storage.h" />
     <ClInclude Include="TerminalHistory.h" />
     <QtMoc Include="TerminalWidget.h" />
     <QtMoc Include="TerminalCommandWidget.h" />

@@ -10,8 +10,8 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QPointer>
-
-class ScreenSettingsWidget : public QWidget
+#include "widgets/AbstractDialogWidget.h"
+class ScreenSettingsWidget : public AbstractDialogWidget
 {
 	Q_OBJECT
 
@@ -25,7 +25,6 @@ public:
 	codec::VideoFormat getVideoFormat() { return _fmt; }
 signals:
 	void paramChanged(const codec::VideoFormat& fmt);
-	void hideSettings();
 private:
 	void setScreenInfo(const Rd::ScreenInfo& scr);
 	void showEvent(QShowEvent* event);

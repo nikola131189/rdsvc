@@ -127,19 +127,19 @@ namespace Net
 
 		ip::tcp::socket connect(boost::asio::io_context& ctx, boost::system::error_code& ec)
 		{
-			ip::tcp::socket sock(ctx);
+			_sock = std::make_shared<ip::tcp::socket>(ctx);
 			size_t res = 0;
 			boost::asio::ip::tcp::resolver resolver{ ctx };
 			auto const results = resolver.resolve(_adr5, std::to_string(_port5), ec);
 			if (!results.empty())
 			{
 				boost::asio::ip::tcp::endpoint ep = *results.begin();
-				sock.connect(ep, ec);
+				_sock->connect(ep, ec);
 				if (ec)
-					return std::move(sock);;
-				login(sock, ec);
+					return std::move(*_sock);
+				login(_sock, ec);
 				if (ec)
-					return std::move(sock);;
+					return std::move(*_sock);;
 
 				AuthReq req;
 				AuthResp resp;
@@ -150,31 +150,38 @@ namespace Net
 				memcpy(&req.destAddr.domain, &_adr[0], req.destAddr.domainLen);
 				req.destPort = _port;
 
-				socksRequest(sock, req, resp, ec);
+				socksRequest(_sock, req, resp, ec);
 			}
-			return std::move(sock);
+			return std::move(*_sock);
 		}
+		
+		std::string address() { return _adr; }
 
+		void cancel() {
+			if (_sock && _sock->is_open())
+				_sock->close();
+		}
+		
 		~ConnectorSocks5() {}
 	private:
-		bool login(ip::tcp::socket& sock, boost::system::error_code& ec)
+		bool login(std::shared_ptr<ip::tcp::socket>& sock, boost::system::error_code& ec)
 		{
 			IdentReq req;
 			req.methodsNum = 0x1;
 			req.methods[0] = 0x0;
 
-			boost::asio::write(sock, boost::asio::buffer(&req, 2 + req.methodsNum), ec);
+			boost::asio::write(*sock, boost::asio::buffer(&req, 2 + req.methodsNum), ec);
 			if (ec) return false;
 
 			IdentResp resp;
-			boost::asio::read(sock, boost::asio::buffer(&resp, sizeof(resp)), ec);
+			boost::asio::read(*sock, boost::asio::buffer(&resp, sizeof(resp)), ec);
 			if (ec) return false;
 
 			return true;
 		}
 
 
-		bool socksRequest(ip::tcp::socket& sock, const AuthReq& req, AuthResp& resp, boost::system::error_code& ec)
+		bool socksRequest(std::shared_ptr<ip::tcp::socket>& sock, const AuthReq& req, AuthResp& resp, boost::system::error_code& ec)
 		{
 			memset(&resp, 0, sizeof(resp));
 
@@ -212,11 +219,11 @@ namespace Net
 
 			memcpy(ptr, &port, 2); ptr += 2; s += 2;
 
-			boost::asio::write(sock, boost::asio::buffer(&buff[0], s), ec);
+			boost::asio::write(*sock, boost::asio::buffer(&buff[0], s), ec);
 			if (ec) return false;
 
 
-			boost::asio::read(sock, boost::asio::buffer(&resp, 4), ec);
+			boost::asio::read(*sock, boost::asio::buffer(&resp, 4), ec);
 			if (ec) return false;
 
 
@@ -224,21 +231,21 @@ namespace Net
 			{
 			case 1:
 			{
-				boost::asio::read(sock, boost::asio::buffer(&resp.bindAddr.IPv4, 4), ec);
+				boost::asio::read(*sock, boost::asio::buffer(&resp.bindAddr.IPv4, 4), ec);
 				if (ec) return false;
 				break;
 			}
 			case 3:
 			{
-				boost::asio::read(sock, boost::asio::buffer(&resp.bindAddr.domainLen, 1), ec);
+				boost::asio::read(*sock, boost::asio::buffer(&resp.bindAddr.domainLen, 1), ec);
 				if (ec) return false;
-				boost::asio::read(sock, boost::asio::buffer(&resp.bindAddr.domain, resp.bindAddr.domainLen), ec);
+				boost::asio::read(*sock, boost::asio::buffer(&resp.bindAddr.domain, resp.bindAddr.domainLen), ec);
 				if (ec) return false;
 				break;
 			}
 			case 4:
 			{
-				boost::asio::read(sock, boost::asio::buffer(&resp.bindAddr.IPv6, 16), ec);
+				boost::asio::read(*sock, boost::asio::buffer(&resp.bindAddr.IPv6, 16), ec);
 				if (ec) return false;
 				break;
 			}
@@ -249,7 +256,7 @@ namespace Net
 			}
 			}
 
-			boost::asio::read(sock, boost::asio::buffer(&port, 2), ec);
+			boost::asio::read(*sock, boost::asio::buffer(&port, 2), ec);
 			if (ec)
 				return false;
 
@@ -269,6 +276,8 @@ namespace Net
 	private:
 		std::string _adr, _adr5;
 		uint16_t _port, _port5;
+
+		std::shared_ptr<ip::tcp::socket> _sock;
 	};
 
 }

@@ -109,6 +109,9 @@ namespace Net
 		uint64_t lastActive() { return _lastActive; }
 		boost::asio::any_io_executor get_executor() { return _sock.get_executor(); }
 		boost::asio::ip::tcp::endpoint remote_endpoint();
+		bool isOpen() {
+			return _sock.is_open();
+		}
 	private:
 
 

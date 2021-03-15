@@ -5,10 +5,11 @@ StringListWidget::StringListWidget(const QStringList& data, const QString& title
 {
 	ui.setupUi(this);
 
-	label = new QLabel(title);
-	list = new QListView;
+	label = new QLabel(title, this);
+	list = new QListView(this);
 	list->setModel(new QStringListModel(data));
-	QVBoxLayout* l = new QVBoxLayout;
+	list->setMouseTracking(true);
+	QVBoxLayout* l = new QVBoxLayout(this);
 	l->addWidget(label);
 	l->addWidget(list);
 	setLayout(l);

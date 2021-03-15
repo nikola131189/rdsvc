@@ -10,6 +10,7 @@
 #include <QClipboard>
 #include <QMimeData>
 #include <QThread>
+#include "widgets/GlassWidget.h"
 
 class ScreenWidget :
 	public TabItem
@@ -47,7 +48,7 @@ private:
 	bool _clipboardLock = false;
 	boost::signals2::connection _screenConn;
 	boost::signals2::connection _notifyClipboardConn;
-
+	GlassWidget* _glass;
 private:
 	Ui::ScreenWidget ui;
 };
