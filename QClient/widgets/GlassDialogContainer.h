@@ -1,25 +1,26 @@
 #pragma once
 
 #include <QWidget>
-#include "ui_GlassWidget.h"
+#include "ui_GlassDialogContainer.h"
 #include <QEvent>
 #include <QVBoxLayout>
 #include <QPaintEvent>
 #include <QPainter>
 #include <QGraphicsBlurEffect>
-#include "AbstractDialogWidget.h"
+
 #include <QScrollArea>
 #include <QScrollBar>
 
 #include <QLabel>
+#include "DialogBase.h"
 
-class GlassWidget : public QWidget
+class GlassDialogContainer : public QWidget
 {
 	Q_OBJECT
 
 public:
-	GlassWidget(const QString& title, AbstractDialogWidget*w, QWidget *parent = Q_NULLPTR);
-	~GlassWidget();
+	GlassDialogContainer(const QString& title, DialogBase* w, QWidget* parent = Q_NULLPTR, bool isGlassClickable = true);
+	~GlassDialogContainer();
 private:
 	void mousePressEvent(QMouseEvent* event);
 	void resizeEvent(QResizeEvent* event);
@@ -28,11 +29,16 @@ private:
 	void updatePosition();
 	void showEvent(QShowEvent* event);
 
-	Ui::GlassWidget ui;
+	Ui::GlassDialogContainer ui;
 	QWidget* _root;
 	QWidget* _title;
-	AbstractDialogWidget* _widget;
+	DialogBase* _widget;
 	QScrollArea* _scrollArea;
 
 	const int _titleHeight = 50;
+
+	bool _isGlassClickable;
 };
+
+
+

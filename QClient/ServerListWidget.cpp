@@ -40,22 +40,11 @@ ServerListWidget::ServerListWidget(QWidget *parent)
 
 	
 
-	{
-		for (int i = 0; i < _model->servers().size(); i++)
-		{
-			QPushButton* btn = new QPushButton(_model->servers()[i].description.c_str(), this);
-			btn->setCheckable(true);
-			_serversWidget->addButton(btn, i);
-		}
-	}
+	
 
 
 	_serversEditor = new ServersEditor(_model);
-	_glass = new GlassWidget("Servers settings", _serversEditor, this);
-	
-	//_serversEditor->hide();
-	//_serversEditor->setWindowFlags(Qt::Dialog);
-	
+	_glass = new GlassDialogContainer("Servers settings", _serversEditor, this);
 	_glass->hide();
 
 	QObject::connect(_serversWidget, &ScrollableButtonGroup::idClicked, [this](int id) {
@@ -66,10 +55,11 @@ ServerListWidget::ServerListWidget(QWidget *parent)
 			_connector->cancel();
 
 		std::unique_lock<std::mutex> lk(_mut);
+		_serverInfo = _model->servers()[id];
 		Rd::Inet::init("", _serverInfo.imprint);
 
 		_connector = nullptr;
-		_serverInfo = _model->servers()[id];
+		
 		if (_serverInfo.connectionType == "tcp")
 			_connector = std::make_shared<Net::ConnectorTcp>(_serverInfo.address1, _serverInfo.port1);
 
@@ -89,7 +79,22 @@ ServerListWidget::ServerListWidget(QWidget *parent)
 	QPushButton* btn = new QPushButton("edit", this);
 	QObject::connect(btn, &QPushButton::clicked, [this]() { _glass->show(); });
 	layout->addWidget(btn);
-	_thr = std::thread(&ServerListWidget::loop, this);
+
+	Gui::Dialog::makeInput("Password", "Enter password", "", this, [this](const QString& p, bool ok) {
+		if (ok)
+		{
+			for (int i = 0; i < _model->servers().size(); i++)
+			{
+				QPushButton* btn = new QPushButton(_model->servers()[i].description.c_str(), this);
+				btn->setCheckable(true);
+				_serversWidget->addButton(btn, i);
+			}
+			_thr = std::thread(&ServerListWidget::loop, this);
+		}		
+		else
+			exit(0);
+		}, false);
+
 }
 
 ServerListWidget::~ServerListWidget()

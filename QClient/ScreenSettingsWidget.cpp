@@ -2,7 +2,7 @@
 
 ScreenSettingsWidget::ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *parent)
 	: _screenInfo(scr),
-	AbstractDialogWidget(parent),
+	DialogBase(parent),
 	_disableInput(false),
 	_clipboardSync(true),
 	_spyMode(false),
@@ -92,7 +92,7 @@ ScreenSettingsWidget::ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *p
 		QObject::connect(btn, &QPushButton::clicked, [&](){
 			setState();
 			paramChanged(_fmt);
-			hideDialog();
+			hideSignal();
 		});
 
 
@@ -107,7 +107,7 @@ ScreenSettingsWidget::ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *p
 
 		QPushButton* btn3 = new QPushButton("cancel", this);
 		QObject::connect(btn3, &QPushButton::clicked, [&](){
-			hideDialog();
+			hideSignal();
 		});
 
 
@@ -263,5 +263,5 @@ void ScreenSettingsWidget::loadState()
 void ScreenSettingsWidget::showEvent(QShowEvent* event)
 {
 	loadState();
-	AbstractDialogWidget::showEvent(event);
+	QWidget::showEvent(event);
 }

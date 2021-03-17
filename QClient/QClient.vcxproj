@@ -212,8 +212,9 @@
     <ClCompile Include="TerminalCommandWidget.cpp" />
     <ClCompile Include="TerminalWidget.cpp" />
     <ClCompile Include="TransferWidget.cpp" />
-    <ClCompile Include="widgets\AbstractDialogWidget.cpp" />
-    <ClCompile Include="widgets\GlassWidget.cpp" />
+    <ClCompile Include="widgets\DialogBase.cpp" />
+    <ClCompile Include="widgets\ErrorDialog.cpp" />
+    <ClCompile Include="widgets\GlassDialogContainer.cpp" />
     <ClCompile Include="widgets\InputDialogWidget.cpp" />
     <ClCompile Include="widgets\ItemDelegate.cpp" />
     <ClCompile Include="widgets\LabelLineEdit.cpp" />
@@ -246,8 +247,9 @@
     <QtUic Include="TerminalCommandWidget.ui" />
     <QtUic Include="TerminalWidget.ui" />
     <QtUic Include="TransferWidget.ui" />
-    <QtUic Include="widgets\AbstractDialogWidget.ui" />
-    <QtUic Include="widgets\GlassWidget.ui" />
+    <QtUic Include="widgets\DialogBase.ui" />
+    <QtUic Include="widgets\ErrorDialog.ui" />
+    <QtUic Include="widgets\GlassDialogContainer.ui" />
     <QtUic Include="widgets\InputDialogWidget.ui" />
     <QtUic Include="widgets\LabelLineEdit.ui" />
     <QtUic Include="widgets\LineEdit.ui" />
@@ -299,10 +301,11 @@
   <ItemGroup>
     <ClInclude Include="AbstractTransfer.h" />
     <ClInclude Include="FileTransfer.h" />
+    <QtMoc Include="widgets\DialogBase.h" />
+    <QtMoc Include="widgets\ErrorDialog.h" />
+    <QtMoc Include="widgets\GlassDialogContainer.h" />
     <QtMoc Include="widgets\LabelLineEdit.h" />
     <QtMoc Include="widgets\InputDialogWidget.h" />
-    <QtMoc Include="widgets\GlassWidget.h" />
-    <QtMoc Include="widgets\AbstractDialogWidget.h" />
     <QtMoc Include="widgets\ScrollableButtonGroup.h" />
     <QtMoc Include="widgets\ScrollContainer.h" />
     <QtMoc Include="ServerListWidget.h" />

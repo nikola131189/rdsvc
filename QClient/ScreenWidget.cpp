@@ -5,8 +5,8 @@ ScreenWidget::ScreenWidget(const Rd::Client& cl, const Rd::ScreenInfo& scr, QWid
 {
 	ui.setupUi(this);
 	_screenSettings = new ScreenSettingsWidget(scr, this);
-	_glass = new GlassWidget("Screen settings", _screenSettings, this);
-
+	_glass = new GlassDialogContainer("Screen settings", _screenSettings, this);
+	_glass->show();
 
 	QObject::connect(_screenSettings, &ScreenSettingsWidget::paramChanged, [&](const codec::VideoFormat& fmt) {
 		sendClose();
@@ -59,7 +59,7 @@ ScreenWidget::ScreenWidget(const Rd::Client& cl, const Rd::ScreenInfo& scr, QWid
 
 	QObject::connect(_screenCtrlWidget, &ScreenCtrlWidget::settingsSignal, [this]() {_glass->show(); });
 
-	_glass->show();
+	_screenSettings->show();
 }
 
 ScreenWidget::~ScreenWidget()

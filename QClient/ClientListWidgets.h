@@ -27,6 +27,8 @@ public:
 	void setState(const QByteArray& s);
 signals:
 	void clientChanged(const Rd::Client& cl);
+protected:
+	void focusInEvent(QFocusEvent* event);
 private:
 	Ui::ClientListWidgets ui;
 

@@ -1,7 +1,7 @@
-#include "GlassWidget.h"
+#include "GlassDialogContainer.h"
 
-GlassWidget::GlassWidget(const QString& title, AbstractDialogWidget* w, QWidget *parent)
-	: QWidget(parent), _widget(w)
+GlassDialogContainer::GlassDialogContainer(const QString& title, DialogBase* w, QWidget* parent, bool isGlassClickable)
+	: QWidget(parent), _widget(w), _isGlassClickable(isGlassClickable)
 {
 	ui.setupUi(this);
 
@@ -10,7 +10,7 @@ GlassWidget::GlassWidget(const QString& title, AbstractDialogWidget* w, QWidget 
 	QVBoxLayout* l = new QVBoxLayout(this);
 	l->setAlignment(Qt::AlignHCenter | Qt::AlignBottom);
 	_title->setLayout(l);
-	
+
 	l->addWidget(new QLabel(title, this));
 
 	//setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
@@ -18,7 +18,8 @@ GlassWidget::GlassWidget(const QString& title, AbstractDialogWidget* w, QWidget 
 
 	_scrollArea = new QScrollArea(this);
 	_scrollArea->horizontalScrollBar()->hide();
-	
+	_scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
+
 	setAttribute(Qt::WA_TranslucentBackground);
 	_widget->setParent(_scrollArea);
 	_scrollArea->setWidget(_widget);
@@ -30,38 +31,41 @@ GlassWidget::GlassWidget(const QString& title, AbstractDialogWidget* w, QWidget 
 	} while (_root->parent());
 
 	_root->installEventFilter(this);
-	
+	//_widget->installEventFilter(this);
 	setParent(_root);
 
-	QObject::connect(_widget, &AbstractDialogWidget::hideDialog, [this]() { hide(); });
+	QObject::connect(_widget, &DialogBase::showSignal, [this]() { show(); });
+	QObject::connect(_widget, &DialogBase::hideSignal, [this]() { hide(); });
 }
 
-GlassWidget::~GlassWidget()
+GlassDialogContainer::~GlassDialogContainer()
 {
 }
 
 
 
-void GlassWidget::mousePressEvent(QMouseEvent* event)
+void GlassDialogContainer::mousePressEvent(QMouseEvent* event)
 {
-	if(!_scrollArea->geometry().contains(event->pos()) && !_title->geometry().contains(event->pos()))
+	if (!_isGlassClickable)
+		return;
+	if (!_scrollArea->geometry().contains(event->pos()) && !_title->geometry().contains(event->pos()))
 		hide();
 }
 
-void GlassWidget::resizeEvent(QResizeEvent* event)
+void GlassDialogContainer::resizeEvent(QResizeEvent* event)
 {
 	updatePosition();
 
-	
+
 }
 
-void GlassWidget::paintEvent(QPaintEvent* event)
+void GlassDialogContainer::paintEvent(QPaintEvent* event)
 {
 	QPainter p(this);
 	p.fillRect(rect(), QColor(200, 200, 200, 100));
 }
 
-bool GlassWidget::eventFilter(QObject* watched, QEvent* event)
+bool GlassDialogContainer::eventFilter(QObject* watched, QEvent* event)
 {
 	//if (this->isHidden())
 	//	return false;
@@ -74,16 +78,26 @@ bool GlassWidget::eventFilter(QObject* watched, QEvent* event)
 			updatePosition();
 	}
 
-	if (event->type() == QEvent::MouseMove || event->type() == QEvent::MouseButtonPress)
+
+	/*if (event->type() == QEvent::Hide)
 	{
-		return 1;
+		if (watched == _widget)
+			hide();
+
 	}
 
+	if (event->type() == QEvent::Show)
+	{
+		if (watched == _widget)
+			show();
 
-	return false;
+	}*/
+
+
+	return QObject::eventFilter(watched, event);
 }
 
-void GlassWidget::updatePosition()
+void GlassDialogContainer::updatePosition()
 {
 	auto r = _root->rect();
 	auto p = _root->mapToGlobal({ r.left(), r.top() });
@@ -96,31 +110,31 @@ void GlassWidget::updatePosition()
 
 	_title->move(x, y);
 	y += _title->height();
-	
 
 
 
-	
+
+
 	_scrollArea->move(x, y);
 
-	if (_widget->height() > height() - y - offset)
+	if (_widget->height() > height() - y)
 	{
-		_title->resize(_widget->width() + _scrollArea->verticalScrollBar()->width(), _title->height());
-		_scrollArea->resize(_widget->width() + _scrollArea->verticalScrollBar()->width(), height() - y - offset);
+		_title->resize(_widget->width(), _title->height());
+		_scrollArea->resize(_widget->width(), height() - y);
 	}
 	else
 	{
 		_title->resize(_widget->width(), _title->height());
 		_scrollArea->resize(_widget->width(), _widget->height());
 	}
-	
+
 	//_scrollArea->setWidget(_widget);
 /*updateGeometry();
 	_widget->updateGeometry();
 	_scrollArea->updateGeometry();*/
 }
 
-void GlassWidget::showEvent(QShowEvent* event)
+void GlassDialogContainer::showEvent(QShowEvent* event)
 {
 	/*auto* eff = graphicsEffect();
 	QGraphicsBlurEffect* blur = new QGraphicsBlurEffect(this);
@@ -129,10 +143,10 @@ void GlassWidget::showEvent(QShowEvent* event)
 	_widget->setParent(0);
 	setGraphicsEffect(blur);*/
 
-	
+
 	updatePosition();
 	activateWindow();
 
-
+	_widget->show();
 
 }

@@ -206,7 +206,7 @@ bool FilesWidget::eventFilter(QObject* watched, QEvent* event)
 
 	}
 
-	return 0;
+	return QObject::eventFilter(watched, event);
 }
 
 void FilesWidget::initMenu()

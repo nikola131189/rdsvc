@@ -1,7 +1,7 @@
 #include "ServersEditor.h"
 
 ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
-	: _model(model), AbstractDialogWidget(parent)
+	: _model(model), DialogBase(parent)
 {
 	ui.setupUi(this);
 	_tree = new TreeView(this);
@@ -61,7 +61,7 @@ ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
 		btn->setFocusPolicy(Qt::NoFocus);
 		buttonsLayout->addWidget(btn);
 		QObject::connect(btn, &QPushButton::clicked, [this]() {
-			hideDialog();
+			hideSignal();
 			//_model->saveState();
 		});
 	}
@@ -163,7 +163,7 @@ void ServersEditor::setServers(std::vector<ServerInfo>& arg)
 void ServersEditor::hideEvent(QHideEvent* event)
 {
 	_model->update(getState());
-	AbstractDialogWidget::hideEvent(event);
+	//AbstractDialogWidget::hideEvent(event);
 }
 
 void ServersEditor::updateList()

@@ -19,7 +19,7 @@ HomeWidget::HomeWidget(QWidget *parent)
 	_edit->setReadOnly(true);
 	_edit->setFocusPolicy(Qt::NoFocus);
 	_serverListWidget->setFocusPolicy(Qt::NoFocus);
-	_clientControlWidget->setFocusPolicy(Qt::NoFocus);
+	_clientControlWidget->setFocusPolicy(Qt::ClickFocus);
 
 
 	/*QVBoxLayout* l0 = new  QVBoxLayout(this);
@@ -121,5 +121,6 @@ void HomeWidget::onConnectionOpen(const Rd::ConnectionOpen& ev)
 
 void HomeWidget::showEvent(QShowEvent* event)
 {
-	QTimer::singleShot(0, _clientListWidget, SLOT(setFocus()));
+	_clientListWidget->setFocus();
+	//QTimer::singleShot(0, _clientListWidget, SLOT(setFocus()));
 }

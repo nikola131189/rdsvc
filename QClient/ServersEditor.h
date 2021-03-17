@@ -13,14 +13,15 @@
 #include <QStandardItemModel >
 #include "ServersModel.h"
 #include "widgets/TreeView.h"
+#include "widgets/DialogBase.h"
 #include <QSplitter>
 #include <QLabel>
-#include "widgets/AbstractDialogWidget.h"
+
 #include "widgets/LabelLineEdit.h"
 
 class ServerInfoDelegate;
 
-class ServersEditor : public AbstractDialogWidget
+class ServersEditor : public DialogBase
 {
 	Q_OBJECT
 

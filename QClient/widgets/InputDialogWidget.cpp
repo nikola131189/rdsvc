@@ -1,7 +1,7 @@
 #include "InputDialogWidget.h"
 
 InputDialogWidget::InputDialogWidget(const QString& inputName, const QString& text, QWidget *parent)
-	: AbstractDialogWidget(parent)
+	: DialogBase(parent)
 {
 	ui.setupUi(this);
 	_edit = new LabelLineEdit(inputName, this);
@@ -30,7 +30,7 @@ InputDialogWidget::InputDialogWidget(const QString& inputName, const QString& te
 	setMaximumHeight(150);
 
 	_edit->installEventFilter(this);
-	installEventFilter(this);
+	QTimer::singleShot(100, _edit, SLOT(setFocus()));
 }
 
 InputDialogWidget::~InputDialogWidget()
@@ -46,6 +46,7 @@ QString InputDialogWidget::text()
 void InputDialogWidget::focusInEvent(QFocusEvent* event)
 {
 	_edit->setFocus();
+	
 }
 
 bool InputDialogWidget::eventFilter(QObject* watched, QEvent* event)
@@ -58,6 +59,5 @@ bool InputDialogWidget::eventFilter(QObject* watched, QEvent* event)
 		if (e->key() == Qt::Key_Return)
 			okPressed();
 	}
-
-	return false;
+	return QObject::eventFilter(watched, event);
 }

@@ -10,8 +10,9 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QPointer>
-#include "widgets/AbstractDialogWidget.h"
-class ScreenSettingsWidget : public AbstractDialogWidget
+#include "widgets/DialogBase.h"
+
+class ScreenSettingsWidget : public DialogBase
 {
 	Q_OBJECT
 

@@ -1,9 +1,9 @@
 #pragma once
 
 #include "AbstractFilesModel.h"
-#include <QErrorMessage>
 
-
+#include "widgets/ErrorDialog.h"
+#include "widgets/GlassDialogContainer.h"
 class LocalFilesModel : public AbstractFilesModel
 {
 	Q_OBJECT
@@ -18,9 +18,9 @@ public:
 		const std::function<void(const std::list<files::file_info_t>&)>& out);
 private:
 	std::function<void(const std::list<files::file_info_t>&)> _recCbck;
-	QErrorMessage _errDialog;
+	ErrorDialog *_errDialog;
 	void checkError(const std::error_code& ec);
-
+	GlassDialogContainer* _glass;
 };
 
 
@@ -50,7 +50,7 @@ private:
 	std::string _id;
 
 	std::function<void(const std::list<files::file_info_t>&)> _recCbck;
-	QErrorMessage _errDialog;
-
+	ErrorDialog *_errDialog;
+	GlassDialogContainer* _glass;
 	boost::signals2::connection _conn;
 };

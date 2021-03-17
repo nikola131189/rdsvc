@@ -10,7 +10,9 @@
 #include "Storage.h"
 #include "ServersEditor.h"
 #include "widgets/ScrollableButtonGroup.h"
-#include "widgets/GlassWidget.h"
+#include "widgets/GlassDialogContainer.h"
+#include "widgets/InputDialogWidget.h"
+
 
 class ServerListWidget : public QWidget
 {
@@ -38,7 +40,7 @@ private:
 	std::thread _thr;
 	ServersEditor* _serversEditor;
 	ServersModel* _model;
-	GlassWidget* _glass;
+	GlassDialogContainer* _glass;
 
 	std::mutex _mut;
 };

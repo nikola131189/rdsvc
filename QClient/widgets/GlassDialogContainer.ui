@@ -1,8 +1,8 @@
 <UI version="4.0" >
- <class>AbstractSettingsWidget</class>
- <widget class="QWidget" name="AbstractSettingsWidget" >
+ <class>GlassDialogContainer</class>
+ <widget class="QWidget" name="GlassDialogContainer" >
   <property name="objectName" >
-   <string notr="true">AbstractSettingsWidget</string>
+   <string notr="true">GlassDialogContainer</string>
   </property>
   <property name="geometry" >
    <rect>
@@ -13,7 +13,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>AbstractSettingsWidget</string>
+   <string>GlassDialogContainer</string>
   </property>
  </widget>
  <layoutDefault spacing="6" margin="11" />

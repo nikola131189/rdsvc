@@ -8,7 +8,7 @@ ClientListWidgets::ClientListWidgets(QWidget *parent)
 	_tree = new TreeView(this);
 
 	_filterEdit = new LineEdit(this);
-
+	_filterEdit->setFocusPolicy(Qt::ClickFocus);
 
 
 	_model = new ClientsListModel(this);
@@ -136,6 +136,11 @@ QByteArray ClientListWidgets::getState()
 void ClientListWidgets::setState(const QByteArray& s)
 {
 	_tree->header()->restoreState(s);
+}
+
+void ClientListWidgets::focusInEvent(QFocusEvent* event)
+{
+	_tree->setFocus();
 }
 
 

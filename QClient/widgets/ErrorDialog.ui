@@ -1,8 +1,8 @@
 <UI version="4.0" >
- <class>GlassWidget</class>
- <widget class="QWidget" name="GlassWidget" >
+ <class>ErrorDialog</class>
+ <widget class="QWidget" name="ErrorDialog" >
   <property name="objectName" >
-   <string notr="true">GlassWidget</string>
+   <string notr="true">ErrorDialog</string>
   </property>
   <property name="geometry" >
    <rect>
@@ -13,7 +13,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>GlassWidget</string>
+   <string>ErrorDialog</string>
   </property>
  </widget>
  <layoutDefault spacing="6" margin="11" />

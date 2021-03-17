@@ -69,17 +69,35 @@ void ClientControlWidget::initWidgets()
 {
 	
 	_btns->clear();
-	_btns->addButton(new QPushButton("downloads", this), 0);
+	
+	{
+		QPushButton* b = new QPushButton("downloads", this);
+		b->setDefault(true);
+		_btns->addButton(b, 0);
+	}
 	if (_client.id != 0)
 	{
-		_btns->addButton(new QPushButton("terminal", this), 1);
-		_btns->addButton(new QPushButton("files", this), 2);
+		{
+			QPushButton* b = new QPushButton("terminal", this);
+			b->setDefault(true);
+			_btns->addButton(b, 1);
+		}
+		{
+			QPushButton* b = new QPushButton("files", this);
+			b->setDefault(true);
+			_btns->addButton(b, 2);
+		}
 	}
 	
 
 
 	for (size_t i = 0; i < _displayInfo.screens.size(); i++)
-		_btns->addButton(new QPushButton(std::to_string(_displayInfo.screens[i].id).c_str(), this), i + 3);
+	{
+		QPushButton* b = new QPushButton(std::to_string(_displayInfo.screens[i].id).c_str(), this);
+		b->setDefault(true);
+		_btns->addButton(b, i + 3);
+	}
+
 }
 
 bool ClientControlWidget::eventFilter(QObject* watched, QEvent* event)
@@ -108,5 +126,5 @@ bool ClientControlWidget::eventFilter(QObject* watched, QEvent* event)
 
 
 	}
-	return false;
+	return QObject::eventFilter(watched, event);
 }

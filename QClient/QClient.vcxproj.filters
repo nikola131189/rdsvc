@@ -170,25 +170,28 @@
     <ClCompile Include="ServersModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="widgets\ScrollContainer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="widgets\ScrollableButtonGroup.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="widgets\AbstractDialogWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="widgets\GlassWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="widgets\InputDialogWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ScreenPanel.cpp">
       <Filter>screen</Filter>
     </ClCompile>
+    <ClCompile Include="widgets\ScrollableButtonGroup.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\ScrollContainer.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\GlassDialogContainer.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\InputDialogWidget.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
     <ClCompile Include="widgets\LabelLineEdit.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\ErrorDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\DialogBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -271,25 +274,28 @@
     <QtMoc Include="ServersModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="widgets\ScrollContainer.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="widgets\ScrollableButtonGroup.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="widgets\AbstractDialogWidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="widgets\GlassWidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="widgets\InputDialogWidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="ScreenPanel.h">
       <Filter>screen</Filter>
     </QtMoc>
+    <QtMoc Include="widgets\ScrollableButtonGroup.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\ScrollContainer.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
     <QtMoc Include="widgets\LabelLineEdit.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\InputDialogWidget.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\GlassDialogContainer.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\ErrorDialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\DialogBase.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -360,12 +366,6 @@
     <QtUic Include="widgets\ScrollableButtonGroup.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="widgets\AbstractDialogWidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="widgets\GlassWidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="widgets\InputDialogWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -373,6 +373,15 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="widgets\LabelLineEdit.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\GlassDialogContainer.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\ErrorDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\DialogBase.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

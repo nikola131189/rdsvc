@@ -4,6 +4,8 @@
 
 LocalFilesModel::LocalFilesModel(QObject* p) : AbstractFilesModel(p)
 {
+	_errDialog = new ErrorDialog((QWidget *)p);
+	_glass = new GlassDialogContainer("Error", _errDialog, (QWidget*)p);
 }
 
 LocalFilesModel::~LocalFilesModel() {}
@@ -66,8 +68,10 @@ const std::function<void(const std::list<files::file_info_t>&)>& out)
 
 void LocalFilesModel::checkError(const std::error_code& ec)
 {
-	if(ec)
-		_errDialog.showMessage(QString::fromLocal8Bit(ec.message().c_str()) + ": " + std::to_string(ec.value()).c_str());
+	if (ec) {
+		_errDialog->showMessage(QString::fromLocal8Bit(ec.message().c_str()) + ": " + std::to_string(ec.value()).c_str());
+		//_glass->show();
+	}
 }
 
 
@@ -82,6 +86,8 @@ void LocalFilesModel::checkError(const std::error_code& ec)
 
 RemoteFilesModel::RemoteFilesModel(Rd::Client cl, QObject* p) : _client(cl), AbstractFilesModel(p)
 {
+	_errDialog = new ErrorDialog((QWidget*)p);
+	_glass = new GlassDialogContainer("Error", _errDialog, (QWidget*)p);
 	_id = utility::gen_uuid();
 	//Obs::subscribe(this);
 	QObject::connect(this, &RemoteFilesModel::notify, this, &RemoteFilesModel::onNotify);
@@ -173,6 +179,7 @@ void RemoteFilesModel::onNotify(const Rd::FilesEvent& e)
 
 	if (e.type == Rd::FilesEvent::ERR)
 	{
-		_errDialog.showMessage(QString::fromUtf8(e.ec.message.c_str()) + ": " + std::to_string(e.ec.value).c_str());
+		_errDialog->showMessage(QString::fromUtf8(e.ec.message.c_str()) + ": " + std::to_string(e.ec.value).c_str());
+		//_glass->show();
 	}
 }
