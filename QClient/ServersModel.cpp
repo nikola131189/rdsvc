@@ -16,7 +16,7 @@ ServersModel::~ServersModel()
 ServerInfo ServersModel::make()
 {
 	ServerInfo inf;
-	inf.description = "fg";
+	inf.description = "new server";
 	inf.id = _storage.insert(inf);
 	sync();
 	return inf;

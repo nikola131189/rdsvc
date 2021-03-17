@@ -89,7 +89,7 @@ void WinAction::onKeybd(const Rd::ActionEvent::Keybd& ev)
 	uint8_t k = ScanCodeTranslator::sdlToSystem((SDL_Scancode)ev.key);
 	bool pressed = ev.pressed;
 	//MessageBox(0, std::to_wstring(keyUp).c_str(), L"gfs", MB_OK);
-	//if (k == VK_RSHIFT || k == VK_LSHIFT) k = VK_SHIFT;
+	if (k == VK_RSHIFT || k == VK_LSHIFT) k = VK_SHIFT;
 	INPUT inp;
 	inp.type = INPUT_KEYBOARD;
 	inp.ki.wVk = k;

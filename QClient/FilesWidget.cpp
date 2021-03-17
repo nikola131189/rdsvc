@@ -283,7 +283,7 @@ void FilesWidget::do_copy()
 
 void FilesWidget::do_mkdir()
 {
-	Gui::Dialog::makeInput("Make directory", "new dir", this, [this](QString text, bool ok) {
+	Gui::Dialog::makeInput("Make directory", "Directory name", "new dir", this, [this](QString text, bool ok) {
 		if (ok)
 		{
 			_model->mkdir(_path / text.toStdString());
@@ -298,7 +298,7 @@ void FilesWidget::do_rename()
 {
 	std::list<files::file_info_t> l = selected();
 	if (l.empty()) return;
-	Gui::Dialog::makeInput("Rename", QString::fromStdWString(l.front().path.filename()), this, [this, l](QString text, bool ok) {
+	Gui::Dialog::makeInput("Rename", "New name", QString::fromStdWString(l.front().path.filename()), this, [this, l](QString text, bool ok) {
 		if (ok)
 		{
 			_model->rename(l.front().path, _path / text.toStdString());

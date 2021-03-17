@@ -12,7 +12,7 @@ ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
 	_tree->header()->hide();
 	//_model->setColumnTitles({ "description", "Address1", "Address2", "imprint", "type", "port1", "port2" });
 	_model->setColumnTitles({""});
-	resize(800, 400);
+	resize(500, 700);
 
 	QObject::connect(_tree->selectionModel(), &QItemSelectionModel::selectionChanged, [this](const QItemSelection& selected, const QItemSelection& deselected) {
 		
@@ -26,24 +26,28 @@ ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
 		});
 
 
-	_descriptionWidget = new LineEdit(this);
-	_address1Widget = new LineEdit(this);
-	_address2Widget = new LineEdit(this);
-	_imprintWidget = new LineEdit(this);
-	_typeWidget = new LineEdit(this);
+	_descriptionWidget = new LabelLineEdit("Description", this);
+	_address1Widget = new LabelLineEdit("Address1", this);
+	_address2Widget = new LabelLineEdit("Address2", this);
+	_imprintWidget = new LabelLineEdit("Imprint", this);
+	_typeWidget = new LabelLineEdit("Connection type", this);
 	_secretWidget = new QTextEdit(this);
-	_port1Widget = new LineEdit(this);
-	_port2Widget = new LineEdit(this);
+	_port1Widget = new LabelLineEdit("Port1", this);
+	_port2Widget = new LabelLineEdit("Port2", this);
 
 
 	
 
 
 
-
-
-
-
+	//QHBoxLayout* passwordLayout = new QHBoxLayout(this);
+	
+	/*QWidget* passWidget = new QWidget(this);
+	passWidget->setLayout(passwordLayout);*/
+	_passwordWidget = new LabelLineEdit("Password", this);
+	/*passwordLayout->addWidget(_passwordWidget);
+	QPushButton* passBtn = new QPushButton("Change password", this);
+	passwordLayout->addWidget(passBtn);*/
 
 
 
@@ -70,8 +74,8 @@ ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
 			_model->make();
 			//updateList();
 			//_model->makeItem();
-			//_tree->selectionModel()->clearSelection();
-			//_tree->selectionModel()->select(_model->index(_model->rowCount(QModelIndex()) - 1), QItemSelectionModel::Rows | QItemSelectionModel::Select);
+			_tree->selectionModel()->clearSelection();
+			_tree->selectionModel()->select(_model->index(_model->rowCount(QModelIndex()) - 1), QItemSelectionModel::Rows | QItemSelectionModel::Select);
 
 			});
 	}
@@ -92,30 +96,41 @@ ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
 				}
 
 			}
+			if (_model->rowCount(QModelIndex()) > 0)
+			{
+				_tree->selectionModel()->clearSelection();
+				_tree->selectionModel()->select(_model->index(_model->rowCount(QModelIndex()) - 1), QItemSelectionModel::Rows | QItemSelectionModel::Select);
+			}
+
 
 			});
 	}
 	QWidget* buttonsWidget = new QWidget(this);
 	buttonsWidget->setLayout(buttonsLayout);
 
-	
+	QHBoxLayout* pL = new QHBoxLayout(this);
+	pL->setContentsMargins(0, 0, 5, 0);
+	pL->setAlignment(Qt::AlignBottom);
+	pL->addWidget(_passwordWidget);
+	QPushButton* pBtn = new QPushButton("Change password", this);
+	//pBtn->setMinimumWidth(250);
+	pL->addWidget(pBtn);
+	_passwordWidget->setMaximumWidth(width() - 200);
+	QWidget* passWidget = new QWidget(this);
+	passWidget->setLayout(pL);
 
-	_formLayout = new QFormLayout(this);
+	_formLayout = new QVBoxLayout(this);
+	_formLayout->addWidget(_descriptionWidget);
+	_formLayout->addWidget(_typeWidget);
+	_formLayout->addWidget(_address1Widget);
+	_formLayout->addWidget(_port1Widget);
+	_formLayout->addWidget(_address2Widget);
+	_formLayout->addWidget(_port2Widget);
+	_formLayout->addWidget(_imprintWidget);
+	_formLayout->addWidget(new QLabel("Secret", this));
+	_formLayout->addWidget(_secretWidget);
 	_formLayout->setMargin(0);
-	_formLayout->addRow(tr("description:"), _descriptionWidget);
-	_formLayout->addRow(tr("connection type:"), _typeWidget);
-	
-	_formLayout->addRow(tr("address1:"), _address1Widget);
-	_formLayout->addRow(tr("port1:"), _port1Widget);
-
-	_formLayout->addRow(tr("address2:"), _address2Widget);
-	_formLayout->addRow(tr("port2:"), _port2Widget);
-
-	_formLayout->addRow(tr("imprint:"), _imprintWidget);
-
-	_formLayout->addRow(tr("secret:"), _secretWidget);
-	
-
+	_secretWidget->setMaximumHeight(50);
 
 	QWidget* formWidget = new QWidget(this);
 	formWidget->setLayout(_formLayout);
@@ -125,15 +140,12 @@ ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
 	splitter->addWidget(_tree);
 	
 	
-	splitter->setSizes({ 300, 100 });
+	splitter->setSizes({ 300, 160 });
 
-	QLabel* label = new QLabel(this);
-	label->setText("Settings");
-	label->setAlignment(Qt::AlignCenter);
 
 	QVBoxLayout* vl = new QVBoxLayout(this);
 	setLayout(vl);
-	vl->addWidget(label);
+	vl->addWidget(passWidget);
 	vl->addWidget(splitter);
 	vl->addWidget(buttonsWidget);
 

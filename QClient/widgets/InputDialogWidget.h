@@ -8,13 +8,14 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QLabel>
+#include "LabelLineEdit.h"
 
 class InputDialogWidget : public AbstractDialogWidget
 {
 	Q_OBJECT
 
 public:
-	InputDialogWidget(const QString& title, const QString& text, QWidget *parent = Q_NULLPTR);
+	InputDialogWidget(const QString& inputName, const QString& text, QWidget *parent = Q_NULLPTR);
 	~InputDialogWidget();
 	QString text();
 signals:
@@ -25,7 +26,7 @@ protected:
 	bool eventFilter(QObject* watched, QEvent* event);
 private:
 	Ui::InputDialogWidget ui;
-	LineEdit* _edit;
+	LabelLineEdit* _edit;
 };
 
 
@@ -33,10 +34,10 @@ private:
 
 namespace Gui::Dialog
 {
-	static void makeInput(const QString& title, const QString& text, QWidget* parent, const std::function<void(QString, bool)>& cbck)
+	static void makeInput(const QString& title, const QString& inputName, const QString& text, QWidget* parent, const std::function<void(QString, bool)>& cbck)
 	{
-		InputDialogWidget* w = new InputDialogWidget(title, text, parent);
-		GlassWidget* glass = new GlassWidget(w, parent);
+		InputDialogWidget* w = new InputDialogWidget(inputName, text, parent);
+		GlassWidget* glass = new GlassWidget(title, w, parent);
 		QObject::connect(w, &InputDialogWidget::okPressed, [w, glass, cbck]() { cbck(w->text(), true); glass->hide(); });
 		QObject::connect(w, &InputDialogWidget::cancelPressed, [w, glass, cbck]() {cbck(w->text(), false); glass->hide(); });
 		glass->show();

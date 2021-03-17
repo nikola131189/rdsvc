@@ -9,6 +9,33 @@ ScreenCtrlWidget::ScreenCtrlWidget(QWidget *parent)
 	QObject::connect(this, &ScreenCtrlWidget::destroyed, [&] {
 		//keyboard_hook::stop();
 	});
+
+	_upperPanel = new ScreenPanel(this);
+	_upperPanel->hide();
+
+	QObject::connect(_upperPanel, &ScreenPanel::settingsSignal, this, &ScreenCtrlWidget::settingsSignal);
+
+	QObject::connect(_upperPanel, &ScreenPanel::shortcutSignal, [this](const QString& shortcut) {
+		if (shortcut == "Shift + Alt")
+		{
+			keybdEventSignal({ SDL_SCANCODE_LSHIFT, true, true });
+			keybdEventSignal({ SDL_SCANCODE_LALT, true, true });
+			keybdEventSignal({ SDL_SCANCODE_LSHIFT, false, true });
+			keybdEventSignal({ SDL_SCANCODE_LALT, false, true });
+		}
+
+		if (shortcut == "Gui")
+		{
+			keybdEventSignal({ SDL_SCANCODE_LGUI, true, false });
+			keybdEventSignal({ SDL_SCANCODE_LGUI, false, false });
+		}
+
+
+	});
+
+	QObject::connect(_upperPanel, &ScreenPanel::buttonSignal, [this](uint32_t k, bool pressed, bool ext) {
+		keybdEventSignal({ k, pressed, ext });
+	});
 }
 
 ScreenCtrlWidget::~ScreenCtrlWidget()
@@ -252,4 +279,12 @@ void ScreenCtrlWidget::keyReleaseEvent(QKeyEvent* event)
 	}
 
 	keybdEventSignal({ k, false, ext });
+}
+
+
+void ScreenCtrlWidget::resizeEvent(QResizeEvent* event)
+{
+	int x = (width() - _upperPanel->width()) / 2;
+	int y = 0;
+	_upperPanel->move(x, y);
 }

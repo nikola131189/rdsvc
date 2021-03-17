@@ -8,7 +8,7 @@
 #include <rd/rd.h>
 #include "ui_ScreenCtrlWidget.h"
 #include <QKeyEvent>
-
+#include "ScreenPanel.h"
 
 class ScreenCtrlWidget : public QWidget
 {
@@ -22,7 +22,7 @@ public:
 signals:
 	void keybdEventSignal(const Rd::ActionEvent::Keybd& k);
 	void mouseEventSignal(const Rd::ActionEvent::Mouse& m);
-	void upperPanelShow();
+	void settingsSignal();
 public slots:
 	void setScreen(const QImage& img);
 	void setCursor(const Rd::CursorInfo& curs);
@@ -36,6 +36,7 @@ private:
 	void setHook();
 	void keyPressEvent(QKeyEvent* event);
 	void keyReleaseEvent(QKeyEvent* event);
+	void resizeEvent(QResizeEvent* event);
 private:
 	Ui::ScreenCtrlWidget ui;
 
@@ -46,4 +47,6 @@ private:
 	QPoint _shapePos;
 
 	bool _isShapeVisible = true;
+
+	ScreenPanel* _upperPanel;
 };

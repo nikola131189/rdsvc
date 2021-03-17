@@ -32,6 +32,7 @@ Ret findArg(const std::string& key, int argc, char* argv[])
 int main(int argc, char* argv[])
 {
 #ifdef _WIN32
+
 	HDESK hdesk = OpenInputDesktop(0, true, GENERIC_ALL);
 	SetThreadDesktop(hdesk);
 	CloseDesktop(hdesk);

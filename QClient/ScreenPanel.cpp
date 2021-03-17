@@ -42,24 +42,72 @@ ScreenPanel::ScreenPanel(QWidget *parent)
 	}
 
 	{
+		QPushButton* btn1 = new QPushButton("Ctrl", this);
+		l->addWidget(btn1);
+		btn1->setCheckable(true);
+		QObject::connect(btn1, &QPushButton::clicked, [this, btn1]() { buttonSignal(SDL_SCANCODE_LCTRL, btn1->isChecked(), true); });
+	}
+
+	{
+		QPushButton* btn1 = new QPushButton("Shift", this);
+		l->addWidget(btn1);
+		btn1->setCheckable(true);
+		QObject::connect(btn1, &QPushButton::clicked, [this, btn1]() { buttonSignal(SDL_SCANCODE_LSHIFT, btn1->isChecked(), true); });
+	}
+
+	{
+		QPushButton* btn1 = new QPushButton("Alt", this);
+		l->addWidget(btn1);
+		btn1->setCheckable(true);
+		QObject::connect(btn1, &QPushButton::clicked, [this, btn1]() { buttonSignal(SDL_SCANCODE_LALT, btn1->isChecked(), true); });
+	}
+
+	{
+		QPushButton* btn1 = new QPushButton("Gui", this);
+		l->addWidget(btn1);
+		btn1->setCheckable(true);
+		QObject::connect(btn1, &QPushButton::clicked, [this, btn1]() { buttonSignal(SDL_SCANCODE_LGUI, btn1->isChecked(), true);  });
+	}
+
+
+	{
 		QPushButton* btn1 = new QPushButton("Shift + Alt", this);
 		l->addWidget(btn1);
+		QObject::connect(btn1, &QPushButton::clicked, [this, btn1]() {
+			buttonSignal(SDL_SCANCODE_LSHIFT, true, true);
+			buttonSignal(SDL_SCANCODE_LALT, true, true);
+			buttonSignal(SDL_SCANCODE_LSHIFT, false, true);
+			buttonSignal(SDL_SCANCODE_LALT, false, true);
+		});
 	}
 
-	{
-		QPushButton* btn1 = new QPushButton("Command", this);
+	/*{
+		QPushButton* btn1 = new QPushButton("Ctrl + Alt + Del", this);
 		l->addWidget(btn1);
-	}
+		QObject::connect(btn1, &QPushButton::clicked, [this, btn1]() {
+			buttonSignal(SDL_SCANCODE_LCTRL, true, true);
 
-	{
-		QPushButton* btn1 = new QPushButton("Ctrl + Alt + Delete", this);
-		l->addWidget(btn1);
-	}
 
-	{
-		QPushButton* btn1 = new QPushButton("Caps Lock", this);
-		l->addWidget(btn1);
-	}
+			buttonSignal(SDL_SCANCODE_LALT, true, true);
+
+
+			buttonSignal(SDL_SCANCODE_DELETE, true, false);
+	
+
+
+			buttonSignal(SDL_SCANCODE_LCTRL, false, true);
+
+
+			buttonSignal(SDL_SCANCODE_LALT, false, true);
+
+
+			buttonSignal(SDL_SCANCODE_DELETE, false, false);
+
+
+			});
+	}*/
+
+
 
 	setMinimumWidth(800);
 	setMaximumHeight(50);

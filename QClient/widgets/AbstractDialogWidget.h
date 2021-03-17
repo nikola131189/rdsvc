@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QWidget>
-#include "ui_AbstractSettingsWidget.h"
+
 
 #include <QEvent>
 #include <QGraphicsBlurEffect>
@@ -18,7 +18,4 @@ public:
 	~AbstractDialogWidget();
 signals:
 	void hideDialog();
-private:
-	void paintEvent(QPaintEvent* ev);
-	Ui::AbstractSettingsWidget ui;
 };

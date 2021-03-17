@@ -51,7 +51,7 @@ ServerListWidget::ServerListWidget(QWidget *parent)
 
 
 	_serversEditor = new ServersEditor(_model);
-	_glass = new GlassWidget(_serversEditor, this);
+	_glass = new GlassWidget("Servers settings", _serversEditor, this);
 	
 	//_serversEditor->hide();
 	//_serversEditor->setWindowFlags(Qt::Dialog);

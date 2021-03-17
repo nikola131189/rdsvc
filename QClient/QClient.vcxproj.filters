@@ -186,6 +186,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ScreenPanel.cpp">
+      <Filter>screen</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\LabelLineEdit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -284,6 +287,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ScreenPanel.h">
+      <Filter>screen</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\LabelLineEdit.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -364,6 +370,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="ScreenPanel.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="widgets\LabelLineEdit.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

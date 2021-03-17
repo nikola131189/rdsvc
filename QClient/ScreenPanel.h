@@ -18,7 +18,8 @@ public:
 	~ScreenPanel();
 signals:
 	void settingsSignal();
-
+	void shortcutSignal(const QString& shortcut);
+	void buttonSignal(uint32_t k, bool pressed, bool ext);
 protected:
 	void mouseMoveEvent(QMouseEvent* event);
 	void showEvent(QShowEvent* event);

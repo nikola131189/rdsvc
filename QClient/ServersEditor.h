@@ -16,6 +16,7 @@
 #include <QSplitter>
 #include <QLabel>
 #include "widgets/AbstractDialogWidget.h"
+#include "widgets/LabelLineEdit.h"
 
 class ServerInfoDelegate;
 
@@ -44,10 +45,11 @@ private:
 	ServersModel* _model;
 
 
-	LineEdit* _descriptionWidget, * _address1Widget, * _address2Widget, * _imprintWidget, * _typeWidget, * _port1Widget, * _port2Widget;
+	LabelLineEdit* _descriptionWidget, * _address1Widget, * _address2Widget, * _imprintWidget,
+		* _typeWidget, * _port1Widget, * _port2Widget, *_passwordWidget;
 	QTextEdit* _secretWidget;
 	QGridLayout* _gridLayout;
-	QFormLayout* _formLayout;
+	QVBoxLayout* _formLayout;
 
 	ServerInfo _curent;
 };

@@ -11,7 +11,7 @@ HomeWidget::HomeWidget(QWidget *parent)
 	
 	_clientControlWidget = new ClientControlWidget(this);
 	
-	QWidget* w0 = new QWidget(this);
+	//QWidget* w0 = new QWidget(this);
 
 	_splitter = new QSplitter(Qt::Horizontal, this);
 
@@ -38,16 +38,16 @@ HomeWidget::HomeWidget(QWidget *parent)
 
 	_splitter1 = new QSplitter(Qt::Vertical, this);
 	_splitter1->addWidget(_clientListWidget);
-	_splitter1->addWidget(_edit);
+	
 	_splitter1->setStretchFactor(0, 100);
 
 
 	_splitter->addWidget(_splitter0);
 	_splitter->addWidget(_splitter1);
-	_splitter->addWidget(w0);
-	_splitter->setStretchFactor(2, 100);
-
-
+	//_splitter->addWidget(w0);
+	
+	_splitter->addWidget(_edit);
+_splitter->setStretchFactor(2, 100);
 
 
 	QHBoxLayout* l = new QHBoxLayout;
@@ -97,25 +97,25 @@ void HomeWidget::setState(const QSettings& sett)
 void HomeWidget::onConnectionError(const Rd::ConnectionError& ev)
 {
 	_clientControlWidget->setClient({});
-	_edit->insertPlainText("\n");
 	_edit->moveCursor(QTextCursor::End);
 	
 	QTime t = QTime::currentTime();
 	_edit->insertPlainText(t.toString(Qt::ISODateWithMs) + "  ");
 
 	_edit->insertPlainText(QString::fromLocal8Bit(ev.msg.c_str()));
-
+	_edit->insertPlainText("\n\n");
 	_edit->moveCursor(QTextCursor::End);
 }
 
 void HomeWidget::onConnectionOpen(const Rd::ConnectionOpen& ev)
 {
-	_edit->insertPlainText("\n");
+	
 	_edit->moveCursor(QTextCursor::End);
 	QTime t = QTime::currentTime();
 	_edit->insertPlainText(t.toString(Qt::ISODateWithMs) + "  ");
 
 	_edit->insertPlainText("connected");
+	_edit->insertPlainText("\n\n");
 	_edit->moveCursor(QTextCursor::End);
 }
 

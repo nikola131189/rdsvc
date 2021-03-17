@@ -128,15 +128,12 @@ ScreenSettingsWidget::ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *p
 	_fmt.threadCount = 4;
 
 
-	QLabel* title = new QLabel("Screen settings", this);
-	title->setAlignment(Qt::AlignCenter);
+
 
 	l5 = new QVBoxLayout(this);
-	l5->addWidget(title);
 	l5->addWidget(w1);
 	l5->addWidget(w2);
 	l5->addWidget(w3);
-
 	//l1->setRowMinimumHeight(0, 250);
 	
 	setLayout(l5);
