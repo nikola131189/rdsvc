@@ -1,16 +1,28 @@
 #include "ServersModel.h"
 
 
-ServersModel::ServersModel(QObject* p)
+ServersModel::ServersModel(const std::string& db, QObject* p)
 	:
+	_storage(db),
 	TreeModel(p)
 {
-	sync();
+	
 }
 
 ServersModel::~ServersModel()
 {
 
+}
+
+void ServersModel::init(const std::string& secret)
+{
+	_storage.init(secret);
+	sync();
+}
+
+void ServersModel::rekey(const std::string& secret)
+{
+	_storage.rekey(secret);
 }
 
 ServerInfo ServersModel::make()

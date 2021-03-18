@@ -18,6 +18,7 @@ public:
 	InputDialogWidget(const QString& inputName, const QString& text, QWidget *parent = Q_NULLPTR);
 	~InputDialogWidget();
 	QString text();
+	LabelLineEdit* edit();
 signals:
 	void okPressed();
 	void cancelPressed();
@@ -41,6 +42,26 @@ namespace Gui::Dialog
 		GlassDialogContainer* glass = new GlassDialogContainer(title, w, parent, isGlassClickable);
 		QObject::connect(w, &InputDialogWidget::okPressed, [w, glass, cbck]() { cbck(w->text(), true); glass->hide(); });
 		QObject::connect(w, &InputDialogWidget::cancelPressed, [w, glass, cbck]() {cbck(w->text(), false); glass->hide(); });
+		glass->show();
+		w->setFocus();
+	}
+
+
+	static void makePassword(const QString& title, const QString& inputName, const QString& text,
+		QWidget* parent, const std::function<void(InputDialogWidget *, bool)>& cbck, bool isGlassClickable = true)
+	{
+		InputDialogWidget* w = new InputDialogWidget(inputName, text, parent);
+		GlassDialogContainer* glass = new GlassDialogContainer(title, w, parent, isGlassClickable);
+		QObject::connect(w, &InputDialogWidget::okPressed, [w, glass, cbck]() 
+			{
+				cbck(w, true);
+			});
+		QObject::connect(w, &InputDialogWidget::cancelPressed, [w, glass, cbck]()
+			{
+				cbck(w, false);
+			});
+		
+		w->edit()->setEchoMode(QLineEdit::Password);
 		glass->show();
 		w->setFocus();
 	}

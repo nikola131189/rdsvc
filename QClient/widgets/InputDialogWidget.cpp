@@ -12,6 +12,8 @@ InputDialogWidget::InputDialogWidget(const QString& inputName, const QString& te
 	QWidget* w1 = new QWidget(this);
 	w1->setLayout(l1);
 
+
+
 	QPushButton* ok = new QPushButton("ok", this);
 	QObject::connect(ok, &QPushButton::clicked, [this]() {okPressed(); });
 	l1->addWidget(ok);
@@ -26,11 +28,11 @@ InputDialogWidget::InputDialogWidget(const QString& inputName, const QString& te
 	l->addWidget(w1);
 	setLayout(l);
 
-	setMinimumWidth(500);
-	setMaximumHeight(150);
-
 	_edit->installEventFilter(this);
 	QTimer::singleShot(100, _edit, SLOT(setFocus()));
+
+	setMinimumWidth(500);
+	setMaximumHeight(150);
 }
 
 InputDialogWidget::~InputDialogWidget()
@@ -40,6 +42,12 @@ InputDialogWidget::~InputDialogWidget()
 QString InputDialogWidget::text()
 {
 	return _edit->text();
+}
+
+
+LabelLineEdit* InputDialogWidget::edit()
+{
+	return _edit;
 }
 
 
@@ -57,6 +65,8 @@ bool InputDialogWidget::eventFilter(QObject* watched, QEvent* event)
 		if (e->key() == Qt::Key_Escape)
 			cancelPressed();
 		if (e->key() == Qt::Key_Return)
+			okPressed();
+		if (e->key() == Qt::Key_Enter)
 			okPressed();
 	}
 	return QObject::eventFilter(watched, event);

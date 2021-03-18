@@ -7,9 +7,12 @@ struct ServersModel : public TreeModel
 {
 	Q_OBJECT
 public:
-	ServersModel(QObject* p = nullptr);
+	ServersModel(const std::string& db, QObject* p = nullptr);
 	~ServersModel();
+	void init(const std::string& secret);
+	void rekey(const std::string& secret);
 	ServerInfo make();
+	
 	void update(const ServerInfo& arg);
 	void remove(uint64_t id);
 	std::vector<ServerInfo>& servers();

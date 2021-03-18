@@ -1,19 +1,24 @@
 #pragma once
-#include <sqlite_modern_cpp.h>
+
 #include <string>
 #include "ServerInfo.h"
 #include <vector>
-
+#include <SQLiteCpp/SQLiteCpp.h>
+#include <sstream>
 
 class Storage
 {
 public:
-	Storage();
+	Storage(const std::string &db);
+	void init(const std::string& secret);
+	void rekey(const std::string& secret);
 	void load(std::vector<ServerInfo>& arg);
 	uint64_t insert(const ServerInfo& arg);
 	void update(const ServerInfo& arg);
 	void remove(uint64_t id);
 private:
-	sqlite::database _db;
+	
+	std::string _secret;
+	SQLite::Database _db;
 };
 

@@ -24,7 +24,7 @@ public:
 
 private:
 	void loop();
-
+	void init();
 	Ui::ServerListWidget ui;
 	
 	ScrollableButtonGroup* _serversWidget;

@@ -45,6 +45,7 @@ ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
 	/*QWidget* passWidget = new QWidget(this);
 	passWidget->setLayout(passwordLayout);*/
 	_passwordWidget = new LabelLineEdit("Password", this);
+	_passwordWidget->setEchoMode(QLineEdit::Password);
 	/*passwordLayout->addWidget(_passwordWidget);
 	QPushButton* passBtn = new QPushButton("Change password", this);
 	passwordLayout->addWidget(passBtn);*/
@@ -113,6 +114,9 @@ ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
 	pL->setAlignment(Qt::AlignBottom);
 	pL->addWidget(_passwordWidget);
 	QPushButton* pBtn = new QPushButton("Change password", this);
+	QObject::connect(pBtn, &QPushButton::clicked, [this]() {
+		_model->rekey(_passwordWidget->text().toStdString());
+	});
 	//pBtn->setMinimumWidth(250);
 	pL->addWidget(pBtn);
 	_passwordWidget->setMaximumWidth(width() - 200);

@@ -15,6 +15,8 @@ public:
 	~LabelLineEdit();
 	QString text();
 	void setText(const QString& txt);
+	void setEchoMode(QLineEdit::EchoMode m);
+	void setLabelText(const QString& txt);
 protected:
 	void focusInEvent(QFocusEvent* event);
 private:

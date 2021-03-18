@@ -188,11 +188,11 @@
     <ClCompile Include="widgets\LabelLineEdit.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
-    <ClCompile Include="widgets\ErrorDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="widgets\DialogBase.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\ErrorDialog.cpp">
+      <Filter>widgets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -292,11 +292,11 @@
     <QtMoc Include="widgets\GlassDialogContainer.h">
       <Filter>widgets</Filter>
     </QtMoc>
-    <QtMoc Include="widgets\ErrorDialog.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="widgets\DialogBase.h">
-      <Filter>Header Files</Filter>
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\ErrorDialog.h">
+      <Filter>widgets</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

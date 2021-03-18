@@ -18,6 +18,7 @@ HomeWidget::HomeWidget(QWidget *parent)
 	_edit = new QPlainTextEdit(this);
 	_edit->setReadOnly(true);
 	_edit->setFocusPolicy(Qt::NoFocus);
+	_edit->setMaximumBlockCount(1000);
 	_serverListWidget->setFocusPolicy(Qt::NoFocus);
 	_clientControlWidget->setFocusPolicy(Qt::ClickFocus);
 
