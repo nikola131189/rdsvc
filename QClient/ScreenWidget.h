@@ -49,7 +49,6 @@ private:
 	bool _clipboardLock = false;
 	boost::signals2::connection _screenConn;
 	boost::signals2::connection _notifyClipboardConn;
-	GlassDialogContainer* _glass;
 
 	
 private:

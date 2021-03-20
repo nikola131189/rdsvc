@@ -4,9 +4,8 @@ ScreenWidget::ScreenWidget(const Rd::Client& cl, const Rd::ScreenInfo& scr, QWid
 	: _client(cl), _screenInfo(scr), TabItem(parent)
 {
 	ui.setupUi(this);
-	_screenSettings = new ScreenSettingsWidget(scr, this);
-	_glass = new GlassDialogContainer("Screen settings", _screenSettings, this);
-	_glass->show();
+	_screenSettings = new ScreenSettingsWidget("Screen settings", scr, this);
+	_screenSettings->show();
 
 	QObject::connect(_screenSettings, &ScreenSettingsWidget::paramChanged, [&](const codec::VideoFormat& fmt) {
 		sendClose();
@@ -57,9 +56,8 @@ ScreenWidget::ScreenWidget(const Rd::Client& cl, const Rd::ScreenInfo& scr, QWid
 	_notifyClipboardConn = EventBus::subscribe<Rd::ClipboardEvent>(std::bind(&ScreenWidget::notifyClipboard, this, std::placeholders::_1));
 
 
-	QObject::connect(_screenCtrlWidget, &ScreenCtrlWidget::settingsSignal, [this]() {_glass->show(); });
+	QObject::connect(_screenCtrlWidget, &ScreenCtrlWidget::settingsSignal, [this]() {_screenSettings->show(); });
 
-	_screenSettings->show();
 }
 
 ScreenWidget::~ScreenWidget()

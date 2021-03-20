@@ -306,7 +306,6 @@ QMenu::item:selected { /* when user selects item using mouse or keyboard */
 
 
 
-
 QListView::item:selected {
     background-color: #007ACC;
 	color: white;

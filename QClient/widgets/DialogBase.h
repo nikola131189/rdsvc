@@ -2,17 +2,18 @@
 
 #include <QWidget>
 #include "ui_DialogBase.h"
+#include "GlassDialogContainer.h"
 
 class DialogBase : public QWidget
 {
 	Q_OBJECT
 
 public:
-	DialogBase(QWidget *parent = Q_NULLPTR);
+	DialogBase(const QString& title, QWidget *parent = Q_NULLPTR, bool isGlassClickable = true);
 	~DialogBase();
-signals:
-	void showSignal();
-	void hideSignal();
+	void show();
+	void hide();
 private:
 	Ui::DialogBase ui;
+	GlassDialogContainer* _glass;
 };

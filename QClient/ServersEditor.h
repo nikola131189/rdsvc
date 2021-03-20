@@ -26,7 +26,7 @@ class ServersEditor : public DialogBase
 	Q_OBJECT
 
 public:
-	ServersEditor(ServersModel* model, QWidget *parent = Q_NULLPTR);
+	ServersEditor(const QString& title, ServersModel* model, QWidget *parent = Q_NULLPTR);
 	~ServersEditor();
 	void setServers(std::vector<ServerInfo>& arg);
 signals:

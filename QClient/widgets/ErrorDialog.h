@@ -13,7 +13,7 @@ class ErrorDialog : public DialogBase
 	Q_OBJECT
 
 public:
-	ErrorDialog(QWidget *parent = Q_NULLPTR);
+	ErrorDialog(const QString& title, QWidget *parent = Q_NULLPTR);
 	~ErrorDialog();
 	void showMessage(const QString& mess);
 protected:

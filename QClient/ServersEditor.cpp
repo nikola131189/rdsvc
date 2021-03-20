@@ -1,7 +1,7 @@
 #include "ServersEditor.h"
 
-ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
-	: _model(model), DialogBase(parent)
+ServersEditor::ServersEditor(const QString& title, ServersModel* model, QWidget *parent)
+	: _model(model), DialogBase(title, parent)
 {
 	ui.setupUi(this);
 	_tree = new TreeView(this);
@@ -13,6 +13,7 @@ ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
 	//_model->setColumnTitles({ "description", "Address1", "Address2", "imprint", "type", "port1", "port2" });
 	_model->setColumnTitles({""});
 	resize(500, 700);
+
 
 	QObject::connect(_tree->selectionModel(), &QItemSelectionModel::selectionChanged, [this](const QItemSelection& selected, const QItemSelection& deselected) {
 		
@@ -62,7 +63,7 @@ ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
 		btn->setFocusPolicy(Qt::NoFocus);
 		buttonsLayout->addWidget(btn);
 		QObject::connect(btn, &QPushButton::clicked, [this]() {
-			hideSignal();
+			hide();
 			//_model->saveState();
 		});
 	}
@@ -148,11 +149,23 @@ ServersEditor::ServersEditor(ServersModel* model, QWidget *parent)
 
 
 	QVBoxLayout* vl = new QVBoxLayout(this);
-	setLayout(vl);
+	
 	vl->addWidget(passWidget);
 	vl->addWidget(splitter);
 	vl->addWidget(buttonsWidget);
+	setLayout(vl);
 
+
+
+
+	if (_model->rowCount(QModelIndex()) > 0)
+	{
+		_tree->selectionModel()->clearSelection();
+		_tree->selectionModel()->select(_model->index(0), QItemSelectionModel::Rows | QItemSelectionModel::Select);
+		auto it = (TreeItem*)_model->index(0).internalPointer();
+		auto serv = it->data<ServerInfo>();
+		setState(serv);
+	}
 }
 
 ServersEditor::~ServersEditor()

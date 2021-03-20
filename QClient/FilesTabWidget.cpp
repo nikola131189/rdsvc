@@ -28,30 +28,48 @@ FilesTabWidget::FilesTabWidget(Rd::Client cl, TransferModel* transferModel, QWid
 		});
 
 
-	
+	QHBoxLayout* hl = new QHBoxLayout(this);
 
-	QPushButton* btn1 = new QPushButton("files", this);
 
-	btn1->setFocusPolicy(Qt::NoFocus);
-	QObject::connect(btn1, &QPushButton::clicked, [this]() {
-		_transferWidget->hide();
-		_splitter->show();
+
+	_btns = new QButtonGroup(this);
+	QObject::connect(_btns, &QButtonGroup::idClicked, [this](int id) {
+		if (id == 0)
+		{
+			_transferWidget->hide();
+			_splitter->show();
+		}
+		if (id == 1)
+		{
+			_transferWidget->show();
+			_splitter->hide();
+		}
+
 		});
 
-	QPushButton* btn2 = new QPushButton("downloads", this);
-	btn2->setFocusPolicy(Qt::NoFocus);
+	{
+		QPushButton* b = new QPushButton("files", this);
+		_btns->addButton(b, 0);
+		b->setFocusPolicy(Qt::NoFocus);
+		b->setCheckable(true);
+		b->setChecked(true);
+		hl->addWidget(b);
+	}
 
-	QObject::connect(btn2, &QPushButton::clicked, [this]() {
-		_transferWidget->show();
-		_splitter->hide();
-		});
+
+	{
+		QPushButton* b = new QPushButton("downloads", this);
+		_btns->addButton(b, 1);
+		b->setFocusPolicy(Qt::NoFocus);
+		b->setCheckable(true);
+		hl->addWidget(b);
+	}
+
 
 
 	_splitter = new QSplitter(this);
 	_splitter->addWidget(_left);
 	_splitter->addWidget(_right);
-
-
 
 
 	_left->dir("/");
@@ -60,9 +78,7 @@ FilesTabWidget::FilesTabWidget(Rd::Client cl, TransferModel* transferModel, QWid
 
 	_transferWidget = new TransferWidget(transferModel, this);
 
-	QHBoxLayout* hl = new QHBoxLayout(this);
-	hl->addWidget(btn1);
-	hl->addWidget(btn2);
+
 	//hl->setAlignment(Qt::AlignLeft);
 	hl->setMargin(0);
 	QWidget* w = new QWidget(this);

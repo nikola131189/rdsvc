@@ -17,7 +17,7 @@ class ScreenSettingsWidget : public DialogBase
 	Q_OBJECT
 
 public:
-	ScreenSettingsWidget(const Rd::ScreenInfo& scr, QWidget *parent = Q_NULLPTR);
+	ScreenSettingsWidget(const QString& title, const Rd::ScreenInfo& scr, QWidget *parent = Q_NULLPTR);
 	~ScreenSettingsWidget();
 	bool isDisableInput() { return _disableInput; }
 	bool isSpyMode() { return _spyMode; }

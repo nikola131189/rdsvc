@@ -1,7 +1,7 @@
 #include "ErrorDialog.h"
 
-ErrorDialog::ErrorDialog(QWidget *parent)
-	: DialogBase(parent)
+ErrorDialog::ErrorDialog(const QString& title, QWidget *parent)
+	: DialogBase(title, parent)
 {
 	ui.setupUi(this);
 
@@ -10,7 +10,7 @@ ErrorDialog::ErrorDialog(QWidget *parent)
 	_btn->setDefault(true);
 	_checkBox = new QCheckBox("Show this message", this);
 	_checkBox->setChecked(true);
-	QObject::connect(_btn, &QPushButton::clicked, [this]() { hideSignal(); });
+	QObject::connect(_btn, &QPushButton::clicked, [this]() { hide(); });
 	QVBoxLayout* l = new QVBoxLayout(this);
 	l->addWidget(_checkBox);
 	l->addWidget(_edit);
@@ -31,7 +31,7 @@ void ErrorDialog::showMessage(const QString& mess)
 	_edit->clear();
 	_edit->insertPlainText(mess);
 	if(_checkBox->isChecked())
-		showSignal();
+		show();
 }
 
 
@@ -41,9 +41,9 @@ bool ErrorDialog::eventFilter(QObject* watched, QEvent* event)
 	{
 		QKeyEvent* e = (QKeyEvent*)event;
 		if (e->key() == Qt::Key_Escape)
-			hideSignal();
+			hide();
 		if (e->key() == Qt::Key_Return)
-			hideSignal();
+			hide();
 	}
 	return QObject::eventFilter(watched, event);
 }

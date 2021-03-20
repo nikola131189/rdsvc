@@ -4,8 +4,7 @@
 
 LocalFilesModel::LocalFilesModel(QObject* p) : AbstractFilesModel(p)
 {
-	_errDialog = new ErrorDialog((QWidget *)p);
-	_glass = new GlassDialogContainer("Error", _errDialog, (QWidget*)p);
+	_errDialog = new ErrorDialog("Error", (QWidget *)p);
 }
 
 LocalFilesModel::~LocalFilesModel() {}
@@ -86,8 +85,7 @@ void LocalFilesModel::checkError(const std::error_code& ec)
 
 RemoteFilesModel::RemoteFilesModel(Rd::Client cl, QObject* p) : _client(cl), AbstractFilesModel(p)
 {
-	_errDialog = new ErrorDialog((QWidget*)p);
-	_glass = new GlassDialogContainer("Error", _errDialog, (QWidget*)p);
+	_errDialog = new ErrorDialog("Error", (QWidget*)p);
 	_id = utility::gen_uuid();
 	//Obs::subscribe(this);
 	QObject::connect(this, &RemoteFilesModel::notify, this, &RemoteFilesModel::onNotify);

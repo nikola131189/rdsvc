@@ -8,7 +8,8 @@ ServerListWidget::ServerListWidget(QWidget *parent)
 	ui.setupUi(this);
 	
 
-	_model = new ServersModel("C:\\Users\\user\\source\\repos\\rd\\x64\\Release\\db1.db", this);
+	//_model = new ServersModel("C:\\Users\\user\\source\\repos\\rd\\x64\\Release\\db.db", this);
+	_model = new ServersModel("db.db", this);
 
 	Gui::Dialog::makePassword("Password", "Enter password", "", this, [this](InputDialogWidget* w, bool ok) {
 		if (ok)
@@ -17,7 +18,7 @@ ServerListWidget::ServerListWidget(QWidget *parent)
 			{
 				_model->init(w->text().toStdString());
 				init();
-				w->hideSignal();
+				w->hide();
 			}
 			catch(std::exception e)
 			{
@@ -131,9 +132,8 @@ void ServerListWidget::init()
 
 
 
-	_serversEditor = new ServersEditor(_model);
-	_glass = new GlassDialogContainer("Servers settings", _serversEditor, this);
-	_glass->hide();
+	_serversEditor = new ServersEditor("Servers settings", _model, this);
+	_serversEditor->hide();
 
 	_ctx = new boost::asio::io_context;
 
@@ -182,16 +182,7 @@ void ServerListWidget::init()
 
 	layout->addWidget(_serversWidget);
 
-	QPushButton* btn = new QPushButton("edit", this);
-	QObject::connect(btn, &QPushButton::clicked, [this]() { _glass->show(); });
+	QPushButton* btn = new QPushButton("Settings", this);
+	QObject::connect(btn, &QPushButton::clicked, [this]() { _serversEditor->show(); });
 	layout->addWidget(btn);
-
-
-
-	for (int i = 0; i < _model->servers().size(); i++)
-	{
-		QPushButton* btn = new QPushButton(_model->servers()[i].description.c_str(), this);
-		btn->setCheckable(true);
-		_serversWidget->addButton(btn, i);
-	}
 }

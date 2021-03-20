@@ -12,14 +12,14 @@
 #include <QScrollBar>
 
 #include <QLabel>
-#include "DialogBase.h"
+
 
 class GlassDialogContainer : public QWidget
 {
 	Q_OBJECT
 
 public:
-	GlassDialogContainer(const QString& title, DialogBase* w, QWidget* parent = Q_NULLPTR, bool isGlassClickable = true);
+	GlassDialogContainer(QWidget* title, QWidget* w, QWidget* parent = Q_NULLPTR, bool isGlassClickable = true);
 	~GlassDialogContainer();
 private:
 	void mousePressEvent(QMouseEvent* event);
@@ -32,10 +32,8 @@ private:
 	Ui::GlassDialogContainer ui;
 	QWidget* _root;
 	QWidget* _title;
-	DialogBase* _widget;
+	QWidget* _widget;
 	QScrollArea* _scrollArea;
-
-	const int _titleHeight = 50;
 
 	bool _isGlassClickable;
 };

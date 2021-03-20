@@ -15,7 +15,8 @@ class InputDialogWidget : public DialogBase
 	Q_OBJECT
 
 public:
-	InputDialogWidget(const QString& inputName, const QString& text, QWidget *parent = Q_NULLPTR);
+	InputDialogWidget(const QString& title, const QString& inputName, const QString& text,
+		QWidget *parent = Q_NULLPTR, bool isGlassClickable = true);
 	~InputDialogWidget();
 	QString text();
 	LabelLineEdit* edit();
@@ -38,11 +39,11 @@ namespace Gui::Dialog
 	static void makeInput(const QString& title, const QString& inputName, const QString& text,
 		QWidget* parent, const std::function<void(QString, bool)>& cbck, bool isGlassClickable = true)
 	{
-		InputDialogWidget* w = new InputDialogWidget(inputName, text, parent);
-		GlassDialogContainer* glass = new GlassDialogContainer(title, w, parent, isGlassClickable);
-		QObject::connect(w, &InputDialogWidget::okPressed, [w, glass, cbck]() { cbck(w->text(), true); glass->hide(); });
-		QObject::connect(w, &InputDialogWidget::cancelPressed, [w, glass, cbck]() {cbck(w->text(), false); glass->hide(); });
-		glass->show();
+		InputDialogWidget* w = new InputDialogWidget(title, inputName, text, parent, isGlassClickable);
+
+		QObject::connect(w, &InputDialogWidget::okPressed, [w, cbck]() { cbck(w->text(), true); w->hide(); });
+		QObject::connect(w, &InputDialogWidget::cancelPressed, [w, cbck]() {cbck(w->text(), false); w->hide(); });
+		w->show();
 		w->setFocus();
 	}
 
@@ -50,19 +51,18 @@ namespace Gui::Dialog
 	static void makePassword(const QString& title, const QString& inputName, const QString& text,
 		QWidget* parent, const std::function<void(InputDialogWidget *, bool)>& cbck, bool isGlassClickable = true)
 	{
-		InputDialogWidget* w = new InputDialogWidget(inputName, text, parent);
-		GlassDialogContainer* glass = new GlassDialogContainer(title, w, parent, isGlassClickable);
-		QObject::connect(w, &InputDialogWidget::okPressed, [w, glass, cbck]() 
+		InputDialogWidget* w = new InputDialogWidget(title, inputName, text, parent, isGlassClickable);
+		QObject::connect(w, &InputDialogWidget::okPressed, [w, cbck]() 
 			{
 				cbck(w, true);
 			});
-		QObject::connect(w, &InputDialogWidget::cancelPressed, [w, glass, cbck]()
+		QObject::connect(w, &InputDialogWidget::cancelPressed, [w, cbck]()
 			{
 				cbck(w, false);
 			});
 		
 		w->edit()->setEchoMode(QLineEdit::Password);
-		glass->show();
+		w->show();
 		w->setFocus();
 	}
 }

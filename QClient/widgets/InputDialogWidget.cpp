@@ -1,7 +1,8 @@
 #include "InputDialogWidget.h"
 
-InputDialogWidget::InputDialogWidget(const QString& inputName, const QString& text, QWidget *parent)
-	: DialogBase(parent)
+InputDialogWidget::InputDialogWidget(const QString& title, const QString& inputName, 
+	const QString& text, QWidget *parent, bool isGlassClickable)
+	: DialogBase(title, parent, isGlassClickable)
 {
 	ui.setupUi(this);
 	_edit = new LabelLineEdit(inputName, this);

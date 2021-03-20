@@ -40,7 +40,5 @@ private:
 	std::thread _thr;
 	ServersEditor* _serversEditor;
 	ServersModel* _model;
-	GlassDialogContainer* _glass;
-
 	std::mutex _mut;
 };

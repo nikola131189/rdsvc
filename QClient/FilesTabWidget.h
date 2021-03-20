@@ -11,6 +11,7 @@
 #include "TransferWidget.h"
 #include <QPushButton>
 #include <QSplitter>
+#include <QButtonGroup>
 
 class FilesTabWidget : public TabItem
 {
@@ -44,4 +45,6 @@ private:
 
 	QSplitter* _splitter;
 
+	
+	QButtonGroup* _btns;
 };

@@ -3,7 +3,6 @@
 #include "AbstractFilesModel.h"
 
 #include "widgets/ErrorDialog.h"
-#include "widgets/GlassDialogContainer.h"
 class LocalFilesModel : public AbstractFilesModel
 {
 	Q_OBJECT
@@ -20,7 +19,6 @@ private:
 	std::function<void(const std::list<files::file_info_t>&)> _recCbck;
 	ErrorDialog *_errDialog;
 	void checkError(const std::error_code& ec);
-	GlassDialogContainer* _glass;
 };
 
 
@@ -51,6 +49,5 @@ private:
 
 	std::function<void(const std::list<files::file_info_t>&)> _recCbck;
 	ErrorDialog *_errDialog;
-	GlassDialogContainer* _glass;
 	boost::signals2::connection _conn;
 };

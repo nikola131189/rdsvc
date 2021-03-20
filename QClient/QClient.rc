@@ -79,3 +79,4 @@ IDB_PNG7                PNG                     "res\\up_arrow.png"
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 
+IDI_ICON1 ICON DISCARDABLE "res\\main.ico"
