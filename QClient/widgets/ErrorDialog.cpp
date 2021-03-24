@@ -45,7 +45,7 @@ bool ErrorDialog::eventFilter(QObject* watched, QEvent* event)
 		if (e->key() == Qt::Key_Return)
 			hide();
 	}
-	return QObject::eventFilter(watched, event);
+	return 0;
 }
 
 void ErrorDialog::showEvent(QShowEvent* event)

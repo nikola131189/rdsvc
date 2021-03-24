@@ -11,6 +11,7 @@
 #include <QButtonGroup>
 #include <QLabel>
 #include "widgets/ScrollableButtonGroup.h"
+#include <QTimer>
 
 class ClientControlWidget : public QWidget
 {

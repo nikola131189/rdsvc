@@ -94,7 +94,7 @@ FilesTabWidget::FilesTabWidget(Rd::Client cl, TransferModel* transferModel, QWid
 	l->setMargin(0);
 	//l->setAlignment(Qt::AlignTop);
 	setLayout(l);
-
+	
 }
 
 FilesTabWidget::~FilesTabWidget()

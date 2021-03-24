@@ -112,7 +112,8 @@ bool ClientControlWidget::eventFilter(QObject* watched, QEvent* event)
 
 		if (ev->key() == Qt::Key_F && ev->modifiers() == Qt::ControlModifier)
 		{
-			filesClick(_client);
+			QTimer::singleShot(10, [this]() {filesClick(_client);});
+			
 		}
 
 		/*if (ev->key() > Qt::Key_2 && ev->key() <= Qt::Key_9)
@@ -126,5 +127,5 @@ bool ClientControlWidget::eventFilter(QObject* watched, QEvent* event)
 
 
 	}
-	return QObject::eventFilter(watched, event);
+	return false;
 }

@@ -14,13 +14,8 @@ GlassDialogContainer::GlassDialogContainer(QWidget* title, QWidget* w, QWidget* 
 	_widget->setParent(_scrollArea);
 	_scrollArea->setWidget(_widget);
 
-	_root = this;
-	do {
-		_root = (QWidget*)_root->parent();
-	} while (_root->parent());
-
+	_root = parent;
 	_root->installEventFilter(this);
-	setParent(_root);
 
 }
 

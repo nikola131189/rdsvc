@@ -206,7 +206,7 @@ bool FilesWidget::eventFilter(QObject* watched, QEvent* event)
 
 	}
 
-	return QObject::eventFilter(watched, event);
+	return false;
 }
 
 void FilesWidget::initMenu()
@@ -272,7 +272,7 @@ void FilesWidget::do_remove()
 	std::list<files::file_info_t> l = selected();
 	for (auto it = l.begin(); it != l.end(); it++)
 		_model->remove(it->path);
-	QTimer::singleShot(500, [this]() {dir(_path); });
+	QTimer::singleShot(100, [this]() {dir(_path); });
 }
 
 void FilesWidget::do_copy()
@@ -287,7 +287,7 @@ void FilesWidget::do_mkdir()
 		if (ok)
 		{
 			_model->mkdir(_path / text.toStdString());
-			QTimer::singleShot(500, [this]() {dir(_path);});
+			QTimer::singleShot(100, [this]() {dir(_path);});
 			
 		}
 		_tree->setFocus();
@@ -302,7 +302,7 @@ void FilesWidget::do_rename()
 		if (ok)
 		{
 			_model->rename(l.front().path, _path / text.toStdString());
-			QTimer::singleShot(500, [this]() {dir(_path); });
+			QTimer::singleShot(100, [this]() {dir(_path); });
 		}
 		_tree->setFocus();
 	});
