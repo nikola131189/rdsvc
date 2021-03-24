@@ -30,6 +30,10 @@ struct TerminalHistory
 
 	static void save(const std::string& p)
 	{
+
+		if(!instance()->_changed)
+			return;
+
 		QJsonDocument json;
 		QJsonArray recordsArray;
 
@@ -57,6 +61,7 @@ struct TerminalHistory
 
 	static void push(const QString& str)
 	{
+		instance()->_changed = true;
 		auto it = std::find(std::begin(instance()->m_data), std::end(instance()->m_data), str);
 		if (it != std::end(instance()->m_data))
 			instance()->m_data.erase(it);
@@ -75,4 +80,5 @@ struct TerminalHistory
 	}
 private:
 	std::vector<QString> m_data;
+	bool _changed = false;
 };

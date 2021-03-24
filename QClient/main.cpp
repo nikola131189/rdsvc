@@ -6,6 +6,7 @@
 
 #include <rd/rd.h>
 
+
 Q_DECLARE_METATYPE(Rd::FilesEvent)
 Q_DECLARE_METATYPE(Rd::ClientsEvent)
 Q_DECLARE_METATYPE(Rd::TransferEvent)
@@ -37,7 +38,9 @@ int main(int argc, char *argv[])
 	qRegisterMetaType<Rd::ConnectionOpen>();
 	qRegisterMetaType<Rd::ConnectionError>();
 
-	//new std::thread(networkLoop);
+
+	
+
 
     QApplication a(argc, argv);
 

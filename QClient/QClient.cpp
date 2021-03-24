@@ -8,7 +8,7 @@ QClient::QClient(QWidget *parent)
 	_settings("sett.ini", QSettings::IniFormat)
 {
     ui.setupUi(this);
-
+	TerminalHistory::load("history.json");
 	QList<QToolBar*> allToolBars = findChildren<QToolBar*>();
 	foreach(QToolBar * tb, allToolBars) {
 		removeToolBar(tb);
@@ -126,6 +126,8 @@ void QClient::closeEvent(QCloseEvent* event)
 	_homeWidget->getState(_settings);
 	
 	_settings.sync();
+
+	TerminalHistory::save("history.json");
 
 	QMainWindow::closeEvent(event);
 }

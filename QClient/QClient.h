@@ -7,6 +7,7 @@
 #include <QSettings>
 #include "FilesTabWidget.h"
 #include "TransferWidget.h"
+#include "TerminalHistory.h"
 
 class QClient : public QMainWindow
 {
