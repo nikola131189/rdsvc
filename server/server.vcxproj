@@ -73,12 +73,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <SourcePath>C:\Users\user\source\repos\rd\rd\network;$(SourcePath)</SourcePath>
-    <IncludePath>C:\Users\user\source\repos\rd\lib;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\user\source\repos\rdsvc\lib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <SourcePath>C:\Users\user\source\repos\rd\rd\network;$(SourcePath)</SourcePath>
-    <IncludePath>C:\Users\user\source\repos\rd\lib;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\user\source\repos\rdsvc\lib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
